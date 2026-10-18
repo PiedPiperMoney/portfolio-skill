@@ -1,0 +1,19 @@
+{
+ "instrument": {
+  "figi": "TCS00A0ZZZZ1",
+  "ticker": "RU000A0ZZZZ1",
+  "isin": "RU000A0ZZZZ1",
+  "uid": "u-bond",
+  "nominal": {
+   "currency": "rub",
+   "units": "1000",
+   "nano": 0
+  },
+  "initialNominal": {
+   "currency": "rub",
+   "units": "1000",
+   "nano": 0
+  },
+  "currency": "rub"
+ }
+}

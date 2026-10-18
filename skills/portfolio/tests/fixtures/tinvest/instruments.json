@@ -1,0 +1,77 @@
+{
+ "u-sber": {
+  "instrument": {
+   "figi": "BBG004730N88",
+   "ticker": "SBER",
+   "classCode": "TQBR",
+   "isin": "RU0009029540",
+   "lot": 1,
+   "currency": "rub",
+   "name": "Сбер Банк",
+   "exchange": "MOEX",
+   "instrumentType": "share",
+   "uid": "u-sber",
+   "realExchange": "REAL_EXCHANGE_MOEX"
+  }
+ },
+ "u-bond": {
+  "instrument": {
+   "figi": "TCS00A0ZZZZ1",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "TQCB",
+   "isin": "RU000A0ZZZZ1",
+   "lot": 1,
+   "currency": "rub",
+   "name": "Выдуманная облигация 1",
+   "exchange": "MOEX",
+   "instrumentType": "bond",
+   "uid": "u-bond",
+   "realExchange": "REAL_EXCHANGE_MOEX"
+  }
+ },
+ "u-cny": {
+  "instrument": {
+   "figi": "BBG0013HRTL0",
+   "ticker": "CNYRUB_TOM",
+   "classCode": "CETS",
+   "isin": "",
+   "lot": 1,
+   "currency": "rub",
+   "name": "Юань",
+   "exchange": "MOEX",
+   "instrumentType": "currency",
+   "uid": "u-cny",
+   "realExchange": "REAL_EXCHANGE_MOEX"
+  }
+ },
+ "u-fut": {
+  "instrument": {
+   "figi": "FUTSI0624000",
+   "ticker": "SiM4",
+   "classCode": "SPBFUT",
+   "isin": "",
+   "lot": 1,
+   "currency": "rub",
+   "name": "Si-6.24",
+   "exchange": "MOEX",
+   "instrumentType": "futures",
+   "uid": "u-fut",
+   "realExchange": "REAL_EXCHANGE_MOEX"
+  }
+ },
+ "u-aapl": {
+  "instrument": {
+   "figi": "BBG000B9XRY4",
+   "ticker": "AAPL",
+   "classCode": "SPBXM",
+   "isin": "US0378331005",
+   "lot": 1,
+   "currency": "usd",
+   "name": "Apple",
+   "exchange": "SPB",
+   "instrumentType": "share",
+   "uid": "u-aapl",
+   "realExchange": "REAL_EXCHANGE_RTS"
+  }
+ }
+}

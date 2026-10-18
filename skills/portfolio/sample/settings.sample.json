@@ -1,0 +1,20 @@
+{
+  "title": "Тестовый портфель",
+  "sources": [
+    { "type": "snowball", "file": "reports/snowball-sample.csv" }
+  ],
+  "asOf": "auto",
+  "cash": [
+    { "currency": "RUB", "name": "Рубль", "amount": 25000 },
+    { "currency": "CNY", "name": "Китайский юань", "amount": 300 }
+  ],
+  "watchlist": [
+    { "ticker": "IMOEXF", "name": "Индекс Мосбиржи (вечный фьючерс)", "engine": "futures", "market": "forts", "board": "RFUD" },
+    { "ticker": "CNYRUB_TOM", "name": "Юань", "engine": "currency", "market": "selt", "board": "CETS" },
+    { "ticker": "GAZP", "name": "Газпром", "engine": "stock", "market": "shares", "board": "TQBR" }
+  ],
+  "names": { "SU26238RMFS4": "ОФЗ 26238" },
+  "sectors": {},
+  "forecast": "history12m",
+  "forecastTax": 0.15
+}

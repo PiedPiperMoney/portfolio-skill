@@ -1,0 +1,22 @@
+{
+  "title": "Мой портфель",
+  "sources": [
+    { "type": "snowball", "file": "reports/snowball-export.csv", "account": "БКС", "broker": "БКС" }
+  ],
+  "asOf": "auto",
+  "cash": [
+    { "currency": "RUB", "name": "Рубль", "amount": 10000, "account": "БКС" },
+    { "currency": "CNY", "name": "Китайский юань", "amount": 500 }
+  ],
+  "watchlist": [
+    { "ticker": "IMOEXF", "name": "Индекс Мосбиржи (вечный фьючерс)", "engine": "futures", "market": "forts", "board": "RFUD" },
+    { "ticker": "MOEX", "name": "Мосбиржа", "engine": "stock", "market": "shares", "board": "TQBR" },
+    { "ticker": "CNYRUB_TOM", "name": "Юань", "engine": "currency", "market": "selt", "board": "CETS" },
+    { "ticker": "USDRUBF", "name": "Доллар (вечный фьючерс)", "engine": "futures", "market": "forts", "board": "RFUD" },
+    { "ticker": "GLDRUB_TOM", "name": "Золото, ₽ за грамм", "engine": "currency", "market": "selt", "board": "CETS" }
+  ],
+  "names": { "SBER": "Сбербанк" },
+  "sectors": {},
+  "forecast": "history12m",
+  "forecastTax": 0.15
+}

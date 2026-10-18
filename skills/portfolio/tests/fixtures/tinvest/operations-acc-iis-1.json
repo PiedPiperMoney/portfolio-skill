@@ -1,0 +1,129 @@
+{
+ "hasNext": false,
+ "nextCursor": "",
+ "items": [
+  {
+   "cursor": "c73",
+   "brokerAccountId": "acc-iis",
+   "id": "inp-multi",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_INP_MULTI",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_INP_MULTI",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "1000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c74",
+   "brokerAccountId": "acc-iis",
+   "id": "bsbs-in",
+   "parentOperationId": "",
+   "name": "Зачисление ЦБ",
+   "date": "2024-03-25T07:00:00Z",
+   "type": "OPERATION_TYPE_TRANS_BS_BS",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "10",
+   "quantityRest": "0",
+   "quantityDone": "10",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c75",
+   "brokerAccountId": "acc-iis",
+   "id": "iisbs",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TRANS_IIS_BS",
+   "date": "2024-03-27T07:00:00Z",
+   "type": "OPERATION_TYPE_TRANS_IIS_BS",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "2",
+   "quantityRest": "0",
+   "quantityDone": "2",
+   "childOperations": [],
+   "assetUid": ""
+  }
+ ]
+}

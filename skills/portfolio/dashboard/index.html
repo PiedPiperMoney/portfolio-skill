@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мой портфель</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Forum&family=Golos+Text:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="styles.css">
+<!-- свои доработки оформления (обновление навыка этот файл не перезаписывает) -->
+<link rel="stylesheet" href="custom.css">
+</head>
+<body>
+<div class="pf-loader" role="status" aria-live="polite"><span class="pf-spin" aria-hidden="true"></span><span>Загружаем свежие цены с Мосбиржи…</span></div>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#overview" id="brand">Мой портфель</a>
+    <nav class="nav" aria-label="Разделы" id="nav"></nav>
+    <span class="cur-sec" id="curSec">Обзор</span>
+    <div class="top-right">
+      <span class="stamp" id="stamp"></span>
+      <select class="btn pf-sel" id="pfSel" aria-label="Портфель: все счета, брокер или счёт" hidden></select>
+      <button class="btn" id="themeBtn" type="button">Тема<span class="tlabel" id="themeLabel">: как в системе</span></button>
+      <button class="btn menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">Разделы <span aria-hidden="true">▾</span></button>
+    </div>
+    <div class="menu" id="menu" hidden></div>
+  </div>
+</header>
+
+<main class="wrap">
+  <!-- ОБЗОР -->
+  <section class="sec" id="overview" data-title="Обзор" style="padding-top:8px">
+    <div class="cert">
+      <canvas class="guil" id="guil" aria-hidden="true"></canvas>
+      <div class="cert-in">
+        <div>
+          <div class="hero-tags"><div class="qstate" id="quoteState" role="status" aria-live="polite"></div><div class="qstate loaded" id="loadedState" hidden></div></div>
+          <div class="eyebrow" id="heroLabel"></div>
+          <div class="hero-num num" id="heroValue"></div>
+          <div class="hero-split small" id="heroSplit"></div>
+          <div class="day" id="heroDay"></div>
+          <p class="thesis" id="thesis"></p>
+        </div>
+        <div class="kpis" id="kpis"></div>
+        <div class="mini">
+          <div class="mini-head">
+            <span id="miniTitle">Стоимость бумаг и себестоимость</span>
+            <span class="legend"><span><i style="border-color:var(--s-port)"></i>Стоимость</span><span><i class="dash" style="border-color:var(--s-inv)"></i>Вложено (себестоимость открытых позиций)</span></span>
+          </div>
+          <div class="chart" id="miniChart"></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:16px">
+      <div class="panel">
+        <div class="panel-head"><h3>Что повлияло на день</h3><span class="small muted" id="dayDate"></span></div>
+        <div class="rows" id="dayRows"></div>
+        <p class="small muted" id="dayNote" style="margin:12px 0 0"></p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Крупнейшие позиции</h3><a class="small" href="#assets">Все активы</a></div>
+        <div class="rows" id="topRows"></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Ближайшие выплаты</h3><a class="small" href="#payouts">Календарь</a></div>
+        <div class="rows" id="nextPay"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- АКТИВЫ -->
+  <section class="sec" id="assets" data-title="Активы">
+    <div class="sec-head"><h2>Активы</h2><p id="assetsSub"></p></div>
+    <div class="grid g2" style="margin-bottom:16px">
+      <div class="panel">
+        <div class="panel-head">
+          <h3>Структура</h3>
+          <div class="seg" role="group" aria-label="Разрез структуры" id="structSeg">
+            <button type="button" data-m="pos" aria-pressed="true">По бумагам</button>
+            <button type="button" data-m="kind" aria-pressed="false">По видам</button>
+            <button type="button" data-m="sector" aria-pressed="false">По отраслям</button>
+          </div>
+        </div>
+        <div class="strip" id="strip" role="img"></div>
+        <div class="rows" id="structRows"></div>
+        <p class="small muted" id="structNote" style="margin:12px 0 0"></p>
+      </div>
+      <div class="panel" style="display:grid;gap:12px;align-content:start">
+        <h3>На что обратить внимание</h3>
+        <div id="concentration" style="display:grid;gap:10px"></div>
+      </div>
+    </div>
+    <div class="tbl-wrap pos-table">
+      <table id="posTable">
+        <thead><tr>
+          <th>Бумага</th><th>Количество</th><th>Цена</th><th>Стоимость</th><th>Доля</th><th>Средняя цена покупки</th>
+          <th>Результат за всё время</th><th>Выплаты получены, после налога</th><th>Выплаты за 12 мес вперёд, после налога, прогноз</th>
+        </tr></thead>
+        <tbody></tbody><tfoot></tfoot>
+      </table>
+    </div>
+    <div class="cards" id="posCards"></div>
+    <p class="small muted" style="margin:10px 0 0">Нажмите на бумагу, чтобы открыть карточку со всеми цифрами и операциями. «Результат за всё время» = стоимость + продажи − покупки − комиссии + выплаты после налога.</p>
+  </section>
+
+  <!-- ИЗБРАННОЕ -->
+  <section class="sec" id="watch" data-title="Избранное">
+    <div class="sec-head"><h2>Избранное</h2><p>Бумаги, валюта и фьючерсы, за которыми вы следите. Это не владения портфеля.</p></div>
+    <div class="panel">
+      <form class="wl-form" id="wlForm" autocomplete="off">
+        <label class="small muted" for="wlInput">Добавить тикер Мосбиржи</label>
+        <div class="wl-in"><input id="wlInput" type="text" placeholder="Например, MTSS, CNYRUB_TOM, BRZ6" spellcheck="false"><button class="btn" type="submit" id="wlAdd">Добавить</button><button class="btn" type="button" id="wlReset">Вернуть исходный список</button></div>
+        <div class="small" id="wlMsg" role="status" aria-live="polite"></div>
+      </form>
+      <div class="wl-list" id="wlList"></div>
+      <p class="small muted" id="wlNote" style="margin:12px 0 0"></p>
+    </div>
+  </section>
+
+  <!-- ДОХОДНОСТЬ -->
+  <section class="sec" id="returns" data-title="Доходность">
+    <div class="sec-head"><h2>Доходность</h2><p>Портфель против индексов: модель, в которую вложили бы те же деньги в те же дни</p></div>
+    <div class="controls">
+      <div class="seg" role="group" aria-label="Период" id="periodSeg"></div>
+      <div class="daterange"><label for="dFrom">с</label><input type="date" id="dFrom"><label for="dTo">по</label><input type="date" id="dTo"></div>
+    </div>
+    <div class="controls">
+      <div class="chips" id="idxChips" role="group" aria-label="Индексы для сравнения"></div>
+      <div class="seg" role="group" aria-label="Режим графика" id="modeSeg" style="margin-left:auto">
+        <button type="button" data-m="rub" aria-pressed="true">Стоимость, ₽</button>
+        <button type="button" data-m="pct" aria-pressed="false">Доходность, %</button>
+      </div>
+    </div>
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-head"><h3 id="periodTitle"></h3><span class="small muted" id="periodSub"></span></div>
+      <div class="vs-cards" id="vsCards"></div>
+      <div class="legend" id="bigLegend" style="margin-bottom:8px"></div>
+      <div class="chart" id="bigChart"></div>
+      <p class="small muted" id="modeNote" style="margin:10px 0 0"></p>
+    </div>
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-head"><h3>Результат по годам</h3><span class="small muted" id="yearsSub"></span></div>
+        <div class="legend" id="yearsLegend" style="margin-bottom:8px"></div>
+        <div class="chart" id="yearsChart"></div>
+        <p class="small muted" style="margin:10px 0 0">Результат года = изменение стоимости бумаг − покупки + продажи + выплаты после налога. Так рост от новых покупок не выдаётся за заработок.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Из чего сложилась прибыль за всё время</h3><span class="small muted"><span id="chainFrom"></span> – <span id="chainTo"></span></span></div>
+        <div class="chain" id="chain"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ВЫПЛАТЫ -->
+  <section class="sec" id="payouts" data-title="Выплаты">
+    <div class="sec-head"><h2>Выплаты</h2><p>Дивиденды и купоны: что пришло и что ожидается</p></div>
+    <div class="panel" style="margin-bottom:16px">
+      <div class="panel-head"><h3>Прогноз на 12 месяцев по датам реестра</h3><span class="small muted" id="fcSub"></span></div>
+      <div class="cal" id="cal"></div>
+      <p class="small muted" id="fcNote" style="margin:12px 0 0"></p>
+    </div>
+    <div class="grid g2">
+      <div class="panel">
+        <div class="panel-head"><h3>История по годам</h3>
+          <span class="legend"><span><i style="border-color:var(--gold);border-top-width:8px"></i>После налога</span><span><i style="border-color:var(--gold);border-top-width:8px;opacity:.35"></i>Налог</span></span>
+        </div>
+        <div class="chart" id="divChart"></div>
+        <p class="small muted" style="margin:8px 0 0">Нажмите на год, чтобы увидеть разбивку по бумагам.</p>
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3 id="yearTitle"></h3><div class="yearpick" id="yearPick"></div></div>
+        <div class="tbl-wrap" style="border:0;border-radius:0">
+          <table id="yearTable"><thead><tr><th>Бумага</th><th>До налога</th><th>Налог</th><th>После налога</th></tr></thead><tbody></tbody><tfoot></tfoot></table>
+        </div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px">
+      <div class="panel-head"><h3>Последние поступления</h3><span class="small muted">по дате выплаты</span></div>
+      <div class="tbl-wrap" style="border:0;border-radius:0">
+        <table id="lastPay"><thead><tr><th>Дата</th><th>Бумага</th><th>До налога</th><th>После налога</th><th>Отметка</th></tr></thead><tbody></tbody></table>
+      </div>
+      <p class="small muted" id="estNote" style="margin:10px 0 0"></p>
+    </div>
+  </section>
+
+  <!-- ОПЕРАЦИИ -->
+  <section class="sec" id="ops" data-title="Операции">
+    <div class="sec-head"><h2>Операции</h2><p id="opsSub"></p></div>
+    <div class="filters">
+      <input class="search" id="fQ" type="search" placeholder="Поиск по названию, тикеру или комментарию" aria-label="Поиск">
+      <select id="fType" aria-label="Тип операции"></select>
+      <select id="fTicker" aria-label="Бумага"></select>
+      <select id="fYear" aria-label="Год"></select>
+      <button class="btn" id="fReset" type="button">Сбросить</button>
+    </div>
+    <div class="ops-sum" id="opsSum"></div>
+    <div class="tbl-wrap">
+      <div class="op-list" id="opList"></div>
+      <div class="pager">
+        <span class="small muted" id="pgInfo"></span>
+        <span style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+          <label class="small muted" for="pgSize">Строк на странице</label>
+          <select id="pgSize" class="btn"><option>25</option><option selected>50</option><option>100</option></select>
+          <button class="btn" id="pgPrev" type="button">← Назад</button>
+          <button class="btn" id="pgNext" type="button">Дальше →</button>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ДАННЫЕ -->
+  <section class="sec" id="data" data-title="Данные">
+    <div class="sec-head"><h2>Данные</h2><p id="dataSub">Откуда цифры и где в данных дыры</p></div>
+    <div class="grid g2">
+      <div class="panel" style="display:grid;gap:12px;align-content:start">
+        <h3>Что требует сверки</h3>
+        <div id="warns" style="display:grid;gap:10px"></div>
+      </div>
+      <div class="panel" style="display:grid;gap:12px;align-content:start">
+        <h3>Источники</h3>
+        <div class="facts" style="grid-template-columns:1fr" id="srcFacts"></div>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:16px" id="reconPanel" hidden>
+      <div class="panel-head"><h3>Сверка со Snowball</h3><span class="small muted" id="reconSub"></span></div>
+      <div class="tbl-wrap" style="border:0;border-radius:0">
+        <table class="recon" id="recon"><thead><tr><th>Показатель</th><th>Здесь</th><th>Snowball</th><th>Почему отличается</th></tr></thead><tbody></tbody></table>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>Страница показывает факты и расчёт по вашим данным и не является индивидуальной инвестиционной рекомендацией.</p>
+    <p id="footSrc"></p>
+  </div>
+</footer>
+
+<dialog id="dlg" aria-labelledby="dlgTitle">
+  <div class="dlg-h"><div><h3 id="dlgTitle"></h3><div class="small muted" id="dlgSub"></div></div><button class="btn" type="button" id="dlgClose">Закрыть</button></div>
+  <div class="dlg-b" id="dlgBody"></div>
+</dialog>
+
+<!-- Данные человека: файл рядом со страницей, задаёт window.DATA -->
+<script src="dashboard-data.js"></script>
+<!-- Код дашборда: обычные скрипты по порядку (не модули — страница открывается с диска) -->
+<script src="js/core.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/benchmark.js"></script>
+<script src="js/live.js"></script>
+<script src="js/overview.js"></script>
+<script src="js/assets.js"></script>
+<script src="js/watchlist.js"></script>
+<script src="js/returns.js"></script>
+<script src="js/payouts.js"></script>
+<script src="js/operations.js"></script>
+<script src="js/data.js"></script>
+<!-- свои доработки (обновление навыка этот файл не перезаписывает); подключён до app.js -->
+<script src="custom.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

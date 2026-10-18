@@ -1,0 +1,20 @@
+{
+ "accounts": [
+  {
+   "id": "acc-bs",
+   "type": "ACCOUNT_TYPE_TINKOFF",
+   "name": "Брокерский",
+   "status": "ACCOUNT_STATUS_OPEN",
+   "openedDate": "2020-01-10T00:00:00Z",
+   "accessLevel": "ACCOUNT_ACCESS_LEVEL_READ_ONLY"
+  },
+  {
+   "id": "acc-iis",
+   "type": "ACCOUNT_TYPE_TINKOFF_IIS",
+   "name": "ИИС",
+   "status": "ACCOUNT_STATUS_OPEN",
+   "openedDate": "2021-01-10T00:00:00Z",
+   "accessLevel": "ACCOUNT_ACCESS_LEVEL_READ_ONLY"
+  }
+ ]
+}

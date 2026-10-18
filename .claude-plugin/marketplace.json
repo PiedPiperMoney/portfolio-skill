@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-skill",
+  "description": "Плагин «Портфель» — личный дашборд инвестиций",
+  "owner": {
+    "name": "portfolio-skill"
+  },
+  "plugins": [
+    {
+      "name": "portfolio",
+      "source": "./",
+      "description": "Личный дашборд инвестиционного портфеля у вас на компьютере"
+    }
+  ]
+}

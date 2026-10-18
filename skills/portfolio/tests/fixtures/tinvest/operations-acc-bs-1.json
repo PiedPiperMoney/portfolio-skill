@@ -1,0 +1,1031 @@
+{
+ "hasNext": true,
+ "nextCursor": "page2",
+ "items": [
+  {
+   "cursor": "c1",
+   "brokerAccountId": "acc-bs",
+   "id": "unspecified",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_UNSPECIFIED",
+   "date": "2024-03-01T07:00:00Z",
+   "type": "OPERATION_TYPE_UNSPECIFIED",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c2",
+   "brokerAccountId": "acc-bs",
+   "id": "input",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_INPUT",
+   "date": "2024-03-01T07:00:00Z",
+   "type": "OPERATION_TYPE_INPUT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "100000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c3",
+   "brokerAccountId": "acc-bs",
+   "id": "buy",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY",
+   "date": "2024-03-02T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-28000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "280",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "14",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "100",
+   "quantityRest": "0",
+   "quantityDone": "100",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c4",
+   "brokerAccountId": "acc-bs",
+   "id": "broker_fee",
+   "parentOperationId": "buy",
+   "name": "OPERATION_TYPE_BROKER_FEE",
+   "date": "2024-03-02T07:00:00Z",
+   "type": "OPERATION_TYPE_BROKER_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-14",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c5",
+   "brokerAccountId": "acc-bs",
+   "id": "buy_card",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY_CARD",
+   "date": "2024-03-03T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY_CARD",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-2810",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "281",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "10",
+   "quantityRest": "0",
+   "quantityDone": "10",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c6",
+   "brokerAccountId": "acc-bs",
+   "id": "fee-card",
+   "parentOperationId": "buy_card",
+   "name": "OPERATION_TYPE_BROKER_FEE",
+   "date": "2024-03-03T07:00:00Z",
+   "type": "OPERATION_TYPE_BROKER_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-1",
+    "nano": -410000000
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c7",
+   "brokerAccountId": "acc-bs",
+   "id": "buy-bond",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY",
+   "date": "2024-03-04T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-10150",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "990",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "250",
+    "nano": 0
+   },
+   "quantity": "10",
+   "quantityRest": "0",
+   "quantityDone": "10",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c8",
+   "brokerAccountId": "acc-bs",
+   "id": "sell",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_SELL",
+   "date": "2024-03-05T07:00:00Z",
+   "type": "OPERATION_TYPE_SELL",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "6000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "300",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "3",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "20",
+   "quantityRest": "0",
+   "quantityDone": "20",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c9",
+   "brokerAccountId": "acc-bs",
+   "id": "sell_card",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_SELL_CARD",
+   "date": "2024-03-06T07:00:00Z",
+   "type": "OPERATION_TYPE_SELL_CARD",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "1505",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "301",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "5",
+   "quantityRest": "0",
+   "quantityDone": "5",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c10",
+   "brokerAccountId": "acc-bs",
+   "id": "buy_margin",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY_MARGIN",
+   "date": "2024-03-06T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY_MARGIN",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-300",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "300",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "1",
+   "quantityRest": "0",
+   "quantityDone": "1",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c11",
+   "brokerAccountId": "acc-bs",
+   "id": "sell_margin",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_SELL_MARGIN",
+   "date": "2024-03-06T07:00:00Z",
+   "type": "OPERATION_TYPE_SELL_MARGIN",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "299",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "299",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "1",
+   "quantityRest": "0",
+   "quantityDone": "1",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c12",
+   "brokerAccountId": "acc-bs",
+   "id": "div",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DIVIDEND",
+   "date": "2024-03-07T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "3300",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c13",
+   "brokerAccountId": "acc-bs",
+   "id": "dividend_tax",
+   "parentOperationId": "div",
+   "name": "OPERATION_TYPE_DIVIDEND_TAX",
+   "date": "2024-03-07T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND_TAX",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-429",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c14",
+   "brokerAccountId": "acc-bs",
+   "id": "cpn",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_COUPON",
+   "date": "2024-03-08T07:00:00Z",
+   "type": "OPERATION_TYPE_COUPON",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "400",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c15",
+   "brokerAccountId": "acc-bs",
+   "id": "bond_tax",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BOND_TAX",
+   "date": "2024-03-08T07:00:00Z",
+   "type": "OPERATION_TYPE_BOND_TAX",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-52",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c16",
+   "brokerAccountId": "acc-bs",
+   "id": "div_ext",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DIV_EXT",
+   "date": "2024-03-09T07:00:00Z",
+   "type": "OPERATION_TYPE_DIV_EXT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "100",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c17",
+   "brokerAccountId": "acc-bs",
+   "id": "dividend_tax_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DIVIDEND_TAX_PROGRESSIVE",
+   "date": "2024-03-09T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND_TAX_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-15",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c18",
+   "brokerAccountId": "acc-bs",
+   "id": "cpn2",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_COUPON",
+   "date": "2024-03-10T07:00:00Z",
+   "type": "OPERATION_TYPE_COUPON",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "200",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c19",
+   "brokerAccountId": "acc-bs",
+   "id": "bond_tax_progressive",
+   "parentOperationId": "cpn2",
+   "name": "OPERATION_TYPE_BOND_TAX_PROGRESSIVE",
+   "date": "2024-03-10T07:00:00Z",
+   "type": "OPERATION_TYPE_BOND_TAX_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-30",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c20",
+   "brokerAccountId": "acc-bs",
+   "id": "bond_repayment",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BOND_REPAYMENT",
+   "date": "2024-03-11T07:00:00Z",
+   "type": "OPERATION_TYPE_BOND_REPAYMENT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "2500",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "10",
+   "quantityRest": "0",
+   "quantityDone": "10",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c21",
+   "brokerAccountId": "acc-bs",
+   "id": "bond_repayment_full",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BOND_REPAYMENT_FULL",
+   "date": "2024-03-12T07:00:00Z",
+   "type": "OPERATION_TYPE_BOND_REPAYMENT_FULL",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-bond",
+   "figi": "TCS00A0ZZZZ1",
+   "instrumentType": "bond",
+   "ticker": "RU000A0ZZZZ1",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "7500",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "10",
+   "quantityRest": "0",
+   "quantityDone": "10",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c22",
+   "brokerAccountId": "acc-bs",
+   "id": "buy-cny",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY",
+   "date": "2024-03-13T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-cny",
+   "figi": "BBG0013HRTL0",
+   "instrumentType": "currency",
+   "ticker": "CNYRUB_TOM",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-12500",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "12",
+    "nano": 500000000
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "6",
+    "nano": 250000000
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "1000",
+   "quantityRest": "0",
+   "quantityDone": "1000",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c23",
+   "brokerAccountId": "acc-bs",
+   "id": "sell-cny",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_SELL",
+   "date": "2024-03-13T07:00:00Z",
+   "type": "OPERATION_TYPE_SELL",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-cny",
+   "figi": "BBG0013HRTL0",
+   "instrumentType": "currency",
+   "ticker": "CNYRUB_TOM",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "1260",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "12",
+    "nano": 600000000
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "100",
+   "quantityRest": "0",
+   "quantityDone": "100",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c24",
+   "brokerAccountId": "acc-bs",
+   "id": "div-usd",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DIVIDEND",
+   "date": "2024-03-14T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-aapl",
+   "figi": "BBG000B9XRY4",
+   "instrumentType": "share",
+   "ticker": "AAPL",
+   "classCode": "",
+   "payment": {
+    "currency": "usd",
+    "units": "24",
+    "nano": 0
+   },
+   "price": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c25",
+   "brokerAccountId": "acc-bs",
+   "id": "dividend_tax",
+   "parentOperationId": "div-usd",
+   "name": "OPERATION_TYPE_DIVIDEND_TAX",
+   "date": "2024-03-14T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND_TAX",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-aapl",
+   "figi": "BBG000B9XRY4",
+   "instrumentType": "share",
+   "ticker": "AAPL",
+   "classCode": "",
+   "payment": {
+    "currency": "usd",
+    "units": "-2",
+    "nano": -400000000
+   },
+   "price": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  }
+ ]
+}

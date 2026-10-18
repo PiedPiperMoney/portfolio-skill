@@ -1,0 +1,1933 @@
+{
+ "hasNext": false,
+ "nextCursor": "",
+ "items": [
+  {
+   "cursor": "c26",
+   "brokerAccountId": "acc-bs",
+   "id": "tax",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-260",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c27",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_PROGRESSIVE",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-30",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c28",
+   "brokerAccountId": "acc-bs",
+   "id": "taxcorr-plus",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_CORRECTION",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_CORRECTION",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "100",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c29",
+   "brokerAccountId": "acc-bs",
+   "id": "taxcorr-minus",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_CORRECTION",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_CORRECTION",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-40",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c30",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_correction_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_CORRECTION_PROGRESSIVE",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_CORRECTION_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "10",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c31",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_correction_coupon",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_CORRECTION_COUPON",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_CORRECTION_COUPON",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-5",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c32",
+   "brokerAccountId": "acc-bs",
+   "id": "benefit_tax",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BENEFIT_TAX",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_BENEFIT_TAX",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-7",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c33",
+   "brokerAccountId": "acc-bs",
+   "id": "benefit_tax_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BENEFIT_TAX_PROGRESSIVE",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_BENEFIT_TAX_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-8",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c34",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_repo",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_REPO",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_REPO",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-1",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c35",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_repo_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_REPO_PROGRESSIVE",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_REPO_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-2",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c36",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_repo_hold",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_REPO_HOLD",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_REPO_HOLD",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-3",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c37",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_repo_hold_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_REPO_HOLD_PROGRESSIVE",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_REPO_HOLD_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-4",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c38",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_repo_refund",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_REPO_REFUND",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_REPO_REFUND",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "5",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c39",
+   "brokerAccountId": "acc-bs",
+   "id": "tax_repo_refund_progressive",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TAX_REPO_REFUND_PROGRESSIVE",
+   "date": "2024-03-15T07:00:00Z",
+   "type": "OPERATION_TYPE_TAX_REPO_REFUND_PROGRESSIVE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "6",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c40",
+   "brokerAccountId": "acc-bs",
+   "id": "service_fee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_SERVICE_FEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_SERVICE_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-290",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c41",
+   "brokerAccountId": "acc-bs",
+   "id": "margin_fee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_MARGIN_FEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_MARGIN_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-11",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c42",
+   "brokerAccountId": "acc-bs",
+   "id": "success_fee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_SUCCESS_FEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_SUCCESS_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-12",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c43",
+   "brokerAccountId": "acc-bs",
+   "id": "track_mfee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TRACK_MFEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_TRACK_MFEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-13",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c44",
+   "brokerAccountId": "acc-bs",
+   "id": "track_pfee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_TRACK_PFEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_TRACK_PFEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-14",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c45",
+   "brokerAccountId": "acc-bs",
+   "id": "cash_fee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_CASH_FEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_CASH_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-15",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c46",
+   "brokerAccountId": "acc-bs",
+   "id": "out_fee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUT_FEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_OUT_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-16",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c47",
+   "brokerAccountId": "acc-bs",
+   "id": "out_stamp_duty",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUT_STAMP_DUTY",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_OUT_STAMP_DUTY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-17",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c48",
+   "brokerAccountId": "acc-bs",
+   "id": "output_penalty",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUTPUT_PENALTY",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_OUTPUT_PENALTY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-18",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c49",
+   "brokerAccountId": "acc-bs",
+   "id": "advice_fee",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_ADVICE_FEE",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_ADVICE_FEE",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-19",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c50",
+   "brokerAccountId": "acc-bs",
+   "id": "over_com",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OVER_COM",
+   "date": "2024-03-16T07:00:00Z",
+   "type": "OPERATION_TYPE_OVER_COM",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-20",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c51",
+   "brokerAccountId": "acc-bs",
+   "id": "output",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUTPUT",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_OUTPUT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-5000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c52",
+   "brokerAccountId": "acc-bs",
+   "id": "output_swift",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUTPUT_SWIFT",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_OUTPUT_SWIFT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "usd",
+    "units": "-100",
+    "nano": 0
+   },
+   "price": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c53",
+   "brokerAccountId": "acc-bs",
+   "id": "input_swift",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_INPUT_SWIFT",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_INPUT_SWIFT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "usd",
+    "units": "200",
+    "nano": 0
+   },
+   "price": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "usd",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c54",
+   "brokerAccountId": "acc-bs",
+   "id": "output_acquiring",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUTPUT_ACQUIRING",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_OUTPUT_ACQUIRING",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-300",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c55",
+   "brokerAccountId": "acc-bs",
+   "id": "input_acquiring",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_INPUT_ACQUIRING",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_INPUT_ACQUIRING",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "400",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c56",
+   "brokerAccountId": "acc-bs",
+   "id": "out_multi",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUT_MULTI",
+   "date": "2024-03-17T07:00:00Z",
+   "type": "OPERATION_TYPE_OUT_MULTI",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-1000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c57",
+   "brokerAccountId": "acc-bs",
+   "id": "overnight",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OVERNIGHT",
+   "date": "2024-03-18T07:00:00Z",
+   "type": "OPERATION_TYPE_OVERNIGHT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "21",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c58",
+   "brokerAccountId": "acc-bs",
+   "id": "over_income",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OVER_INCOME",
+   "date": "2024-03-18T07:00:00Z",
+   "type": "OPERATION_TYPE_OVER_INCOME",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "22",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c59",
+   "brokerAccountId": "acc-bs",
+   "id": "over_placement",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OVER_PLACEMENT",
+   "date": "2024-03-18T07:00:00Z",
+   "type": "OPERATION_TYPE_OVER_PLACEMENT",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-50000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c60",
+   "brokerAccountId": "acc-bs",
+   "id": "divtr-plus",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DIVIDEND_TRANSFER",
+   "date": "2024-03-19T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND_TRANSFER",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "50",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c61",
+   "brokerAccountId": "acc-bs",
+   "id": "divtr-minus",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DIVIDEND_TRANSFER",
+   "date": "2024-03-19T07:00:00Z",
+   "type": "OPERATION_TYPE_DIVIDEND_TRANSFER",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-6",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c62",
+   "brokerAccountId": "acc-bs",
+   "id": "accruing_varmargin",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_ACCRUING_VARMARGIN",
+   "date": "2024-03-20T07:00:00Z",
+   "type": "OPERATION_TYPE_ACCRUING_VARMARGIN",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-fut",
+   "figi": "FUTSI0624000",
+   "instrumentType": "futures",
+   "ticker": "SiM4",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "350",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c63",
+   "brokerAccountId": "acc-bs",
+   "id": "writing_off_varmargin",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_WRITING_OFF_VARMARGIN",
+   "date": "2024-03-21T07:00:00Z",
+   "type": "OPERATION_TYPE_WRITING_OFF_VARMARGIN",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-fut",
+   "figi": "FUTSI0624000",
+   "instrumentType": "futures",
+   "ticker": "SiM4",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-120",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c64",
+   "brokerAccountId": "acc-bs",
+   "id": "buy-fut",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY",
+   "date": "2024-03-20T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-fut",
+   "figi": "FUTSI0624000",
+   "instrumentType": "futures",
+   "ticker": "SiM4",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "92000",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "1",
+   "quantityRest": "0",
+   "quantityDone": "1",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c65",
+   "brokerAccountId": "acc-bs",
+   "id": "delivery_buy",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DELIVERY_BUY",
+   "date": "2024-03-22T07:00:00Z",
+   "type": "OPERATION_TYPE_DELIVERY_BUY",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-29000",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "290",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "100",
+   "quantityRest": "0",
+   "quantityDone": "100",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c66",
+   "brokerAccountId": "acc-bs",
+   "id": "delivery_sell",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_DELIVERY_SELL",
+   "date": "2024-03-22T07:00:00Z",
+   "type": "OPERATION_TYPE_DELIVERY_SELL",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "29100",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "291",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "100",
+   "quantityRest": "0",
+   "quantityDone": "100",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c67",
+   "brokerAccountId": "acc-bs",
+   "id": "option_expiration",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OPTION_EXPIRATION",
+   "date": "2024-03-22T07:00:00Z",
+   "type": "OPERATION_TYPE_OPTION_EXPIRATION",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "",
+   "figi": "",
+   "instrumentType": "",
+   "ticker": "",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c68",
+   "brokerAccountId": "acc-bs",
+   "id": "future_expiration",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_FUTURE_EXPIRATION",
+   "date": "2024-03-22T07:00:00Z",
+   "type": "OPERATION_TYPE_FUTURE_EXPIRATION",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-fut",
+   "figi": "FUTSI0624000",
+   "instrumentType": "futures",
+   "ticker": "SiM4",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "0",
+   "quantityRest": "0",
+   "quantityDone": "0",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c69",
+   "brokerAccountId": "acc-bs",
+   "id": "input_securities",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_INPUT_SECURITIES",
+   "date": "2024-03-23T07:00:00Z",
+   "type": "OPERATION_TYPE_INPUT_SECURITIES",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-aapl",
+   "figi": "BBG000B9XRY4",
+   "instrumentType": "share",
+   "ticker": "AAPL",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "3",
+   "quantityRest": "0",
+   "quantityDone": "3",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c70",
+   "brokerAccountId": "acc-bs",
+   "id": "output_securities",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_OUTPUT_SECURITIES",
+   "date": "2024-03-24T07:00:00Z",
+   "type": "OPERATION_TYPE_OUTPUT_SECURITIES",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "7",
+   "quantityRest": "0",
+   "quantityDone": "7",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c71",
+   "brokerAccountId": "acc-bs",
+   "id": "bsbs-out",
+   "parentOperationId": "",
+   "name": "Списание ЦБ на другой счёт",
+   "date": "2024-03-25T07:00:00Z",
+   "type": "OPERATION_TYPE_TRANS_BS_BS",
+   "description": "",
+   "state": "OPERATION_STATE_EXECUTED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "10",
+   "quantityRest": "0",
+   "quantityDone": "10",
+   "childOperations": [],
+   "assetUid": ""
+  },
+  {
+   "cursor": "c72",
+   "brokerAccountId": "acc-bs",
+   "id": "canceled",
+   "parentOperationId": "",
+   "name": "OPERATION_TYPE_BUY",
+   "date": "2024-03-26T07:00:00Z",
+   "type": "OPERATION_TYPE_BUY",
+   "description": "",
+   "state": "OPERATION_STATE_CANCELED",
+   "instrumentUid": "u-sber",
+   "figi": "BBG004730N88",
+   "instrumentType": "share",
+   "ticker": "SBER",
+   "classCode": "",
+   "payment": {
+    "currency": "rub",
+    "units": "-1",
+    "nano": 0
+   },
+   "price": {
+    "currency": "rub",
+    "units": "1",
+    "nano": 0
+   },
+   "commission": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "accruedInt": {
+    "currency": "rub",
+    "units": "0",
+    "nano": 0
+   },
+   "quantity": "1",
+   "quantityRest": "0",
+   "quantityDone": "1",
+   "childOperations": [],
+   "assetUid": ""
+  }
+ ]
+}
