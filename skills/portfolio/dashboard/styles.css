@@ -132,7 +132,7 @@ h3 { font-size: 18px; font-weight: 600; line-height: 1.3; }
 /* первый экран — лист ценной бумаги */
 .cert { position: relative; overflow: hidden; background: var(--sheet); border: 1px solid var(--rule); border-radius: 18px; box-shadow: var(--shadow); }
 .cert::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--rule); border-radius: 12px; pointer-events: none; }
-.cert canvas.guil { position: absolute; right: -6%; top: 50%; transform: translateY(-50%); width: min(620px, 70%); aspect-ratio: 1; height: auto; pointer-events: none; }
+.cert canvas.guil { position: absolute; right: -24%; top: 50%; transform: translateY(-50%); width: min(920px, 86%); aspect-ratio: 1; height: auto; pointer-events: none; }
 .cert-in { position: relative; display: grid; grid-template-columns: fit-content(480px) minmax(0, 1fr); gap: 28px 44px; padding: 36px 40px 32px; }
 @media (max-width: 900px) { .cert-in { grid-template-columns: 1fr; padding: 26px 22px 22px; } .cert canvas.guil { width: 120%; right: -50%; top: 18%; opacity: .35; } }
 .eyebrow { font-size: 13.5px; color: var(--muted); letter-spacing: .02em; }
