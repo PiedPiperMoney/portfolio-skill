@@ -140,7 +140,7 @@ h3 { font-size: 18px; font-weight: 600; line-height: 1.3; }
 .hero-num .cur { font-weight: 400; color: var(--muted); font-size: .62em; margin-left: .12em; }
 .day { display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; font-size: 18px; font-weight: 600; }
 .day .small { font-weight: 400; color: var(--muted); }
-.thesis { margin: 22px 0 0; font-size: 19px; line-height: 1.45; max-width: 36ch; }
+.thesis { margin: 22px 0 0; font-size: 19px; line-height: 1.45; max-width: 52ch; }   /* строки до узора, а не обрываются на середине колонки */
 .thesis b { font-weight: 600; }
 .thesis .small { display: block; margin-top: 6px; font-size: 13.5px; }
 .kpis { display: grid; gap: 0; align-content: center; }   /* линии только между строками — сверху и снизу блок не обрублен */
