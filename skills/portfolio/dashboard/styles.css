@@ -276,6 +276,11 @@ tfoot td { font-weight: 600; border-top: 1px solid var(--rule); border-bottom: 0
 .mon .m-h b { color: var(--ink); font-weight: 600; }
 .mon .it { font-size: 13px; line-height: 1.35; overflow-wrap: anywhere; }
 .mon .it .num { font-weight: 600; }
+.mon .pill { white-space: normal; max-width: 100%; }   /* пометка переносится внутри ячейки, а не вылезает */
+@media (max-width: 560px) {
+  .mon .m-h { flex-wrap: wrap; gap: 2px 6px; }          /* сумма месяца уходит под название, если не помещается */
+  .mon .m-h b { white-space: nowrap; }
+}
 .yearpick { display: flex; flex-wrap: wrap; gap: 4px; }
 
 /* операции */
