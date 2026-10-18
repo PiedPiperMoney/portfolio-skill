@@ -1,16 +1,45 @@
-MIT License
+Лицензия навыка «Портфель» (MIT с условием указания источника при коммерческом использовании)
 
-Copyright (c) 2026 portfolio-skill contributors
+Copyright (c) 2026 «Настоящий инвестор» — https://t.me/investor_true
+
+Разрешается бесплатно и любому лицу, получившему копию этого программного обеспечения и сопутствующей
+документации (далее — «ПО»), использовать ПО без ограничений: копировать, изменять, объединять, публиковать,
+распространять, сублицензировать и продавать копии ПО, а также разрешать это лицам, которым ПО передаётся,
+при соблюдении следующих условий:
+
+1. Указанное выше уведомление об авторских правах и эта лицензия сохраняются во всех копиях или существенных
+   частях ПО.
+2. При коммерческом использовании — в платном продукте или услуге, в разработке на заказ, в курсе, обучении
+   или другом платном материале, основанных на ПО или его частях, — нужно заметно указать источник, например:
+   «Основано на навыке „Портфель“ — https://t.me/investor_true». Указание размещается там, где его увидят
+   пользователи: в описании, README, разделе «О программе», титрах или материалах курса.
+   Личное некоммерческое использование указания источника не требует.
+
+ПО ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ ГАРАНТИИ ТОВАРНОЙ
+ПРИГОДНОСТИ, СООТВЕТСТВИЯ ОПРЕДЕЛЁННОЙ ЦЕЛИ И ОТСУТСТВИЯ НАРУШЕНИЙ. АВТОРЫ И ПРАВООБЛАДАТЕЛИ НИ ПРИ КАКИХ
+ОБСТОЯТЕЛЬСТВАХ НЕ ОТВЕЧАЮТ ПО ИСКАМ О ВОЗМЕЩЕНИИ УЩЕРБА, УБЫТКОВ ИЛИ ДРУГИХ ТРЕБОВАНИЙ, ВОЗНИКШИХ ИЗ ПО, ЕГО
+ИСПОЛЬЗОВАНИЯ ИЛИ ИНЫХ ДЕЙСТВИЙ С НИМ. ПО не является индивидуальной инвестиционной рекомендацией.
+
+---
+
+Portfolio skill license (MIT with an attribution requirement for commercial use)
+
+Copyright (c) 2026 True Investor («Настоящий инвестор») — https://t.me/investor_true
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated
-documentation files (the "Software"), to deal in the Software without restriction, including without limitation the
-rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit
-persons to whom the Software is furnished to do so, subject to the following conditions:
+documentation files (the "Software"), to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and
+to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the
-Software.
+1. The above copyright notice and this permission notice shall be included in all copies or substantial portions
+   of the Software.
+2. Commercial use — a paid product or service, custom development, a course, training or other paid material
+   based on the Software or its parts — must visibly credit the source, for example: "Based on the Portfolio
+   skill — https://t.me/investor_true", placed where users will see it (description, README, About section,
+   credits or course materials). Personal non-commercial use does not require attribution.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE
-WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
-COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF
+CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+IN THE SOFTWARE. The Software is not individual investment advice.
