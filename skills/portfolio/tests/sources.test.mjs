@@ -618,6 +618,7 @@ eq('отчёты скопированы в папку портфеля', ['snowb
   'complex_portfolio_report_1.xlsx'].every((f) => fs.existsSync(path.join(MY, 'reports', f))), true);
 eq('страница на месте, своя доработка не тронута', [fs.existsSync(path.join(MY, 'index.html')), fs.existsSync(path.join(MY, 'js')),
   fs.existsSync(path.join(MY, 'custom.css')), fs.readFileSync(path.join(MY, 'custom.js'), 'utf8')], [true, true, true, '// моя доработка\n']);
+eq('есть папка для новых отчётов', fs.statSync(path.join(MY, 'Новые отчёты')).isDirectory(), true);
 eq('итог настройки: найдено и пропущено', [made.found.length, made.skipped.length], [6, 4]);
 let again = '';
 try { setupWorkdir({ workdir: MY, reports: IN }); } catch (e) { again = e.message; }
@@ -641,6 +642,26 @@ const TI = path.join(TMP, 'Т');
 setupWorkdir({ workdir: TI, tinvest: true });
 eq('Т-Инвестиции: источник по API, токена в настройках нет', JSON.parse(fs.readFileSync(path.join(TI, 'settings.json'), 'utf8')).sources,
   [{ type: 'tinvest', account: 'Т-Инвестиции' }]);
+
+// ---------------------------------------------------------------------------------------------
+section('рецепт «цель по выплатам» из references/доработка.md: код без ошибок, считает от прогноза');
+const recipes = fs.readFileSync(path.join(SKILL, 'references', 'доработка.md'), 'utf8');
+const block = (tag, lang) => (recipes.match(new RegExp(`<!-- ${tag} -->\\s*\`\`\`${lang}\\n([\\s\\S]*?)\`\`\``)) || [])[1] || '';
+const goalJs = block('рецепт-цель-js', 'js');
+const goalBox = { innerHTML: '' };
+const hooks = { before: [], start: [], live: [], redraw: [] };
+let inserted = '';
+const sandbox = {
+  CUSTOM: hooks, fwdTotal: 150000, rub: (n) => `${Math.round(n)} ₽`, pct: (x, d) => `${(x * 100).toFixed(d)} %`,
+  $: (id) => (id === 'goalBox' ? goalBox : null),
+  document: { querySelector: () => ({ insertAdjacentHTML: (_, html) => { inserted = html; } }) },
+};
+(await import('node:vm')).runInNewContext(goalJs, sandbox);
+hooks.before.forEach((f) => f()); hooks.start.forEach((f) => f());
+eq('рецепт цели: карточка встаёт под первый экран и считает половину цели',
+  [/id="goalBox"/.test(inserted), /50 %/.test(goalBox.innerHTML), /150000 ₽/.test(goalBox.innerHTML), /не хватает 150000 ₽/.test(goalBox.innerHTML)],
+  [true, true, true, true]);
+eq('рецепт цели: есть стили', /\.goal-bar i/.test(block('рецепт-цель-css', 'css')), true);
 
 fs.rmSync(TMP, { recursive: true, force: true });
 console.log(`${failed ? 'FAIL' : 'OK  '} sources.test: проверок ${passed + failed}, не прошло ${failed}`);

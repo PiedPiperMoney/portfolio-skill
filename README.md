@@ -18,7 +18,8 @@
 
 ## Установка одной фразой
 
-1. Поставьте агента — DeepSeek Harness или Claude Code — и бесплатный **Node.js** (версия LTS с [nodejs.org](https://nodejs.org)).
+1. Поставьте агента — DeepSeek Harness (deepseek.com/en/harness → «Download Desktop») или Claude Code. Остальное, включая
+   Node.js, агент поставит сам.
 2. Напишите агенту в чат:
 
    > Установи навык https://github.com/PiedPiperMoney/portfolio-skill и настрой мой портфель
@@ -33,28 +34,30 @@
 
 Поставь навык сам, без терминала человека, и сразу веди настройку:
 
-1. `node --version` — нужна 18 или новее. Нет — попроси человека поставить Node.js LTS с nodejs.org, спроси кнопками
-   «Поставил, проверяй» / «Не получается» и проверь снова.
-2. Скачай репозиторий во временную папку и запусти установщик — он скопирует навык в каталог навыков, отложит старую
-   копию, если была, и прогонит проверки:
+1. Скачай репозиторий во временную папку и запусти установщик. `get-node` сам находит Node.js 18+, а если его нет —
+   качает официальный Node LTS с nodejs.org в `~/.portfolio-node` (без пароля администратора, со сверкой контрольной
+   суммы). Установщик копирует навык в каталог навыков, откладывает старую копию, если была, и прогоняет проверки:
    - Мак и Linux:
      ```
-     T="$(mktemp -d)" && curl -fsSL https://github.com/PiedPiperMoney/portfolio-skill/archive/refs/heads/main.tar.gz | tar -xz -C "$T" && node "$T/portfolio-skill-main/install.mjs"
+     T="$(mktemp -d)" && curl -fsSL https://github.com/PiedPiperMoney/portfolio-skill/archive/refs/heads/main.tar.gz | tar -xz -C "$T" && NODE="$(bash "$T/portfolio-skill-main/skills/portfolio/engine/get-node.sh")" && "$NODE" "$T/portfolio-skill-main/install.mjs"
      ```
      Именно `tar.gz`: `unzip` на Маке портит русские имена файлов и теряет папку `references/`.
    - Windows (PowerShell):
      ```
-     $T = Join-Path $env:TEMP ("portfolio-skill-" + [guid]::NewGuid()); New-Item -ItemType Directory $T | Out-Null; Invoke-WebRequest https://github.com/PiedPiperMoney/portfolio-skill/archive/refs/heads/main.zip -OutFile "$T\s.zip" -UseBasicParsing; Expand-Archive "$T\s.zip" $T; node "$T\portfolio-skill-main\install.mjs"
+     $T = Join-Path $env:TEMP ("portfolio-skill-" + [guid]::NewGuid()); New-Item -ItemType Directory $T | Out-Null; Invoke-WebRequest https://github.com/PiedPiperMoney/portfolio-skill/archive/refs/heads/main.zip -OutFile "$T\s.zip" -UseBasicParsing; Expand-Archive "$T\s.zip" $T; $NODE = powershell -NoProfile -ExecutionPolicy Bypass -File "$T\portfolio-skill-main\skills\portfolio\engine\get-node.ps1"; & $NODE "$T\portfolio-skill-main\install.mjs"
      ```
+     `-ExecutionPolicy Bypass` — только для этого запуска: в Windows по умолчанию скрипты .ps1 не запускаются.
    DeepSeek Harness — как есть (`~/.agents/skills/portfolio`, подхватится без перезапуска); Claude Code — добавь
-   `--agent claude` (`~/.claude/skills/portfolio`).
-3. Прочитай установленный `SKILL.md` и `references/настройка.md` и веди настройку с шага 0 — выбор кнопками
+   `--agent claude` (`~/.claude/skills/portfolio`). Дальше во всех командах навыка вместо `node` — путь, который
+   напечатал `get-node` (обычно просто `node`).
+2. Прочитай установленный `SKILL.md` и `references/настройка.md` и веди настройку с шага 0 — выбор кнопками
    (`ask_user_question` в DeepSeek Harness, `AskUserQuestion` в Claude Code).
 
 ## Что нужно
 
-- **Node.js 18 или новее** — проверить: `node --version`. Нет — поставьте версию LTS с [nodejs.org](https://nodejs.org).
-- Агент: DeepSeek Harness (с ключом DeepSeek в настройках агента) или Claude Code.
+- **Node.js 18 или новее** — нет, агент сам скачает его с nodejs.org в `~/.portfolio-node` (`engine/get-node.sh`, на
+  Windows — `get-node.ps1`). Вручную — версия LTS с [nodejs.org](https://nodejs.org).
+- Агент: DeepSeek Harness (вход аккаунтом DeepSeek, баланс — Settings → Account → Top up) или Claude Code.
 - Для своего портфеля — операции из одного или нескольких источников:
   - выгрузка **Snowball Income** (CSV);
   - **Т-Инвестиции** через официальный API — нужен токен **только на чтение** (readonly): настройки Т-Инвестиций

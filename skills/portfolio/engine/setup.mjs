@@ -22,6 +22,8 @@ const ACCOUNT = { snowball: 'Snowball', csv: 'Ручные', bcs: 'БКС', sber
 // у этих брокеров отчёты обычно помесячные — все файлы в одну папку-источник
 const FOLDER_TYPES = new Set(['bcs', 'sber']);
 const MAX_DEPTH = 2;
+// сюда человек кладёт свежие выгрузки и отчёты; на «обнови» агент разбирает их по references/обновление.md
+export const NEW_DIR = 'Новые отчёты';
 const NOT_REPORT = 'не похоже на отчёт брокера или выгрузку Snowball';
 
 function walk(dir, depth = 0, out = []) {
@@ -140,6 +142,7 @@ export function setupWorkdir({ workdir, reports, sample = false, tinvest = false
     settings = Object.assign(example(), { title: 'Мой портфель', sources: plan.sources, cash: [] });
   }
   fs.mkdirSync(path.join(workdir, 'reports'), { recursive: true });
+  fs.mkdirSync(path.join(workdir, NEW_DIR), { recursive: true });
   for (const [from, rel] of copies) {
     const to = path.join(workdir, rel);
     fs.mkdirSync(path.dirname(to), { recursive: true });
@@ -154,21 +157,34 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   const argv = process.argv.slice(2);
   const opt = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : undefined; };
   const home = (p) => p && path.resolve(p.replace(/^~(?=$|[\\/])/, os.homedir()));
-  const workdir = home(opt('--workdir')), reports = home(opt('--reports'));
+  const workdir = home(opt('--workdir')), reports = home(opt('--reports')), detect = home(opt('--detect'));
   const sample = argv.includes('--sample'), tinvest = argv.includes('--tinvest');
+  const printFound = (dir, r) => {
+    for (const f of r.found) console.log(`  нашёл: ${path.relative(dir, f.file)} — ${SOURCE_TYPES[f.type].name}, операций ${f.operations}`);
+    for (const s of r.skipped) console.log(`  пропустил: ${path.relative(dir, s.file)} — ${s.reason}`);
+    if (r.ignored) console.log(`  других файлов не трогал: ${r.ignored}`);
+    if (r.overlap) console.log('Внимание: есть и выгрузка Snowball, и отчёты брокера. Если Snowball собран из того же счёта, '
+      + 'сделки посчитаются дважды — спросите человека (references/настройка.md, 1а).');
+  };
+  // --detect <папка>: только сказать, что в ней лежит (новые отчёты при обновлении), ничего не копируя
+  if (detect) {
+    if (!fs.existsSync(detect)) { process.stderr.write(`Нет папки ${detect}\n`); process.exit(1); }
+    const r = detectReports(detect);
+    if (!r.found.length && !r.skipped.length) console.log('Отчётов не нашёл.');
+    printFound(detect, r);
+    process.exit(0);
+  }
   if (!workdir || [reports, sample, tinvest].filter(Boolean).length !== 1) {
-    process.stderr.write('Использование: node <навык>/engine/setup.mjs --workdir <папка портфеля> (--reports <папка с отчётами> | --sample | --tinvest)\n');
+    process.stderr.write('Использование: node <навык>/engine/setup.mjs --workdir <папка портфеля> (--reports <папка с отчётами> | --sample | --tinvest)\n'
+      + '               node <навык>/engine/setup.mjs --detect <папка>   — что за отчёты лежат в папке\n');
     process.exit(2);
   }
   try {
     const r = setupWorkdir({ workdir, reports, sample, tinvest });
     console.log(`Папка портфеля готова: ${r.workdir}`);
     if (sample) console.log('Портфель тестовый, выдуманный.');
-    for (const f of r.found) console.log(`  нашёл: ${path.relative(reports, f.file)} — ${SOURCE_TYPES[f.type].name}, операций ${f.operations}`);
-    for (const s of r.skipped) console.log(`  пропустил: ${path.relative(reports, s.file)} — ${s.reason}`);
-    if (r.ignored) console.log(`  других файлов не трогал: ${r.ignored}`);
-    if (r.overlap) console.log('Внимание: есть и выгрузка Snowball, и отчёты брокера. Если Snowball собран из того же счёта, '
-      + 'сделки посчитаются дважды — спросите человека (references/настройка.md, 1а).');
+    printFound(reports, r);
+    console.log(`Новые выгрузки и отчёты потом — в папку «${NEW_DIR}» внутри неё.`);
     console.log(`Источники в settings.json: ${r.sources.map((s) => `${SOURCE_TYPES[s.type].name} → счёт «${s.account || ACCOUNT[s.type]}»`).join(', ')}`);
     console.log(`Дальше: node "${path.join(SKILL_DIR, 'engine', 'build.mjs')}" --workdir "${r.workdir}"`);
   } catch (err) {
