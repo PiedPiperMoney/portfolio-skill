@@ -22,8 +22,6 @@ const ACCOUNT = { snowball: 'Snowball', csv: 'Ручные', bcs: 'БКС', sber
 // у этих брокеров отчёты обычно помесячные — все файлы в одну папку-источник
 const FOLDER_TYPES = new Set(['bcs', 'sber']);
 const MAX_DEPTH = 2;
-// сюда человек кладёт свежие выгрузки и отчёты; на «обнови» агент разбирает их по references/обновление.md
-export const NEW_DIR = 'Новые отчёты';
 const NOT_REPORT = 'не похоже на отчёт брокера или выгрузку Snowball';
 
 function walk(dir, depth = 0, out = []) {
@@ -54,10 +52,12 @@ function recognize(file) {
 
 // Повторные скачивания одного файла («отчёт (1).xlsx»): одинаковое содержимое → берём файл с самым коротким именем,
 // остальные — в пропущенные. Иначе одни и те же сделки попадут в портфель дважды.
+const sha1 = (file) => crypto.createHash('sha1').update(fs.readFileSync(file)).digest('hex');
+
 function dropRepeats(files, skipped) {
   const keep = new Map();
   for (const file of files) {
-    const h = crypto.createHash('sha1').update(fs.readFileSync(file)).digest('hex');
+    const h = sha1(file);
     const k = keep.get(h);
     const shorter = !k || path.basename(file).length < path.basename(k).length;
     const [kept, repeat] = shorter ? [file, k] : [k, file];
@@ -83,6 +83,19 @@ export function detectReports(dir) {
   skipped.sort((a, b) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0));
   const has = (t) => found.some((f) => f.type === t);
   return { found, skipped, ignored, overlap: has('snowball') && ['bcs', 'sber', 'intelinvest'].some(has) };
+}
+
+// Обновление: человек докладывает свежие отчёты в ту же папку, что указал при настройке (settings.reportsDir).
+// Новые — те, чьего содержимого ещё нет в <папка>/reports; повторные скачивания старых сюда не попадают.
+export function findNewReports(workdir) {
+  const { reportsDir } = JSON.parse(fs.readFileSync(path.join(workdir, 'settings.json'), 'utf8'));
+  if (!reportsDir) throw new Error('в settings.json не записана папка с отчётами (reportsDir) — портфель настраивали без неё');
+  if (!fs.existsSync(reportsDir)) throw new Error(`папки с отчётами ${reportsDir} больше нет — спросите, куда её перенесли`);
+  const ours = path.join(workdir, 'reports');
+  const known = new Set(fs.existsSync(ours) ? walk(ours).map(sha1) : []);
+  const r = detectReports(reportsDir);
+  const fresh = (f) => !known.has(sha1(f.file));
+  return { dir: reportsDir, found: r.found.filter(fresh), skipped: r.skipped.filter((s) => !/^повтор/.test(s.reason) && fresh(s)) };
 }
 
 // Куда копировать каждый отчёт и какие строки sources получатся
@@ -139,10 +152,10 @@ export function setupWorkdir({ workdir, reports, sample = false, tinvest = false
     }
     const plan = planReports(found);
     copies = plan.copies;
-    settings = Object.assign(example(), { title: 'Мой портфель', sources: plan.sources, cash: [] });
+    // reportsDir — папка человека: туда он докладывает новые отчёты, на «обнови» их находит findNewReports
+    settings = Object.assign(example(), { title: 'Мой портфель', sources: plan.sources, cash: [], reportsDir: path.resolve(reports) });
   }
   fs.mkdirSync(path.join(workdir, 'reports'), { recursive: true });
-  fs.mkdirSync(path.join(workdir, NEW_DIR), { recursive: true });
   for (const [from, rel] of copies) {
     const to = path.join(workdir, rel);
     fs.mkdirSync(path.dirname(to), { recursive: true });
@@ -166,7 +179,16 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     if (r.overlap) console.log('Внимание: есть и выгрузка Snowball, и отчёты брокера. Если Snowball собран из того же счёта, '
       + 'сделки посчитаются дважды — спросите человека (references/настройка.md, 1а).');
   };
-  // --detect <папка>: только сказать, что в ней лежит (новые отчёты при обновлении), ничего не копируя
+  // --new --workdir <папка портфеля>: что нового в папке с отчётами человека с прошлого раза (для «обнови»)
+  if (argv.includes('--new') && workdir) {
+    try {
+      const r = findNewReports(workdir);
+      console.log(r.found.length ? `В папке ${r.dir} новые отчёты:` : `В папке ${r.dir} новых отчётов нет.`);
+      printFound(r.dir, r);
+    } catch (err) { process.stderr.write(`${err.message}\n`); process.exit(1); }
+    process.exit(0);
+  }
+  // --detect <папка>: только сказать, что в ней лежит (например, файл, присланный в чат), ничего не копируя
   if (detect) {
     if (!fs.existsSync(detect)) { process.stderr.write(`Нет папки ${detect}\n`); process.exit(1); }
     const r = detectReports(detect);
@@ -176,6 +198,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
   }
   if (!workdir || [reports, sample, tinvest].filter(Boolean).length !== 1) {
     process.stderr.write('Использование: node <навык>/engine/setup.mjs --workdir <папка портфеля> (--reports <папка с отчётами> | --sample | --tinvest)\n'
+      + '               node <навык>/engine/setup.mjs --new --workdir <папка портфеля>   — что нового в папке с отчётами\n'
       + '               node <навык>/engine/setup.mjs --detect <папка>   — что за отчёты лежат в папке\n');
     process.exit(2);
   }
@@ -184,7 +207,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     console.log(`Папка портфеля готова: ${r.workdir}`);
     if (sample) console.log('Портфель тестовый, выдуманный.');
     printFound(reports, r);
-    console.log(`Новые выгрузки и отчёты потом — в папку «${NEW_DIR}» внутри неё.`);
+    if (reports) console.log(`Новые отчёты человек докладывает в ту же папку: ${reports}`);
     console.log(`Источники в settings.json: ${r.sources.map((s) => `${SOURCE_TYPES[s.type].name} → счёт «${s.account || ACCOUNT[s.type]}»`).join(', ')}`);
     console.log(`Дальше: node "${path.join(SKILL_DIR, 'engine', 'build.mjs')}" --workdir "${r.workdir}"`);
   } catch (err) {

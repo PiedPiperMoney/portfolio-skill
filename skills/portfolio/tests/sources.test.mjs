@@ -20,7 +20,7 @@ import { readCsvTemplate } from '../engine/sources/csv.mjs';
 import { dedupe, resolveMoves } from '../engine/merge.mjs';
 import { compute } from '../engine/model.mjs';
 import { build } from '../engine/build.mjs';
-import { detectReports, setupWorkdir } from '../engine/setup.mjs';
+import { detectReports, setupWorkdir, findNewReports } from '../engine/setup.mjs';
 
 const SKILL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FIX = path.join(SKILL, 'tests', 'fixtures');
@@ -618,7 +618,12 @@ eq('отчёты скопированы в папку портфеля', ['snowb
   'complex_portfolio_report_1.xlsx'].every((f) => fs.existsSync(path.join(MY, 'reports', f))), true);
 eq('страница на месте, своя доработка не тронута', [fs.existsSync(path.join(MY, 'index.html')), fs.existsSync(path.join(MY, 'js')),
   fs.existsSync(path.join(MY, 'custom.css')), fs.readFileSync(path.join(MY, 'custom.js'), 'utf8')], [true, true, true, '// моя доработка\n']);
-eq('есть папка для новых отчётов', fs.statSync(path.join(MY, 'Новые отчёты')).isDirectory(), true);
+eq('папку с отчётами человека навык запомнил', mySettings.reportsDir, IN);
+eq('сразу после настройки новых отчётов нет', findNewReports(MY).found.length, 0);
+// человек скачал в ту же папку свежую выгрузку Snowball (другое содержимое) и ещё раз старый отчёт Сбера
+fs.writeFileSync(path.join(IN, 'snowball-ноябрь.csv'), `${fs.readFileSync(path.join(IN, 'snowball.csv'), 'utf8').trimEnd()}\n"DIVIDEND","2026-07-15 00:00:00","MTSS","26,51","3976,5","RUB","516,95","MCX","","","False",""\n`);
+fs.copyFileSync(path.join(FIX, 'sber-report.html'), path.join(IN, 'Отчёт Сбер (2).html'));
+eq('на «обнови» видит только действительно новый файл', findNewReports(MY).found.map((f) => [f.name, f.type]), [['snowball-ноябрь.csv', 'snowball']]);
 eq('итог настройки: найдено и пропущено', [made.found.length, made.skipped.length], [6, 4]);
 let again = '';
 try { setupWorkdir({ workdir: MY, reports: IN }); } catch (e) { again = e.message; }
