@@ -3,6 +3,7 @@
 // Читает <папка>/settings.json и источники операций, качает рыночные данные (кэш — <папка>/.cache/),
 // пишет <папка>/dashboard-data.js (window.DATA = {...}) и <папка>/report.json (кратко: даты, операции, предупреждения).
 import fs from 'node:fs';
+import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readSnowball } from './sources/snowball.mjs';
@@ -432,6 +433,8 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
     process.stderr.write('Использование: node <навык>/engine/build.mjs --workdir <папка> [--offline] [--quiet]\n');
     process.exit(2);
   }
-  build({ workdir: path.resolve(args[i + 1]), offline: args.includes('--offline'), quiet: args.includes('--quiet') })
+  // «~/Мой портфель» в кавычках оболочка не раскрывает — раскрываем сами, как setup.mjs и shortcut.mjs
+  const workdir = path.resolve(args[i + 1].replace(/^~(?=$|[\\/])/, os.homedir()));
+  build({ workdir, offline: args.includes('--offline'), quiet: args.includes('--quiet') })
     .catch((err) => { process.stderr.write(`Ошибка: ${err.message}\n`); process.exit(1); });
 }

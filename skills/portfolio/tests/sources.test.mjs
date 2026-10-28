@@ -20,6 +20,7 @@ import { readCsvTemplate } from '../engine/sources/csv.mjs';
 import { dedupe, resolveMoves } from '../engine/merge.mjs';
 import { compute } from '../engine/model.mjs';
 import { build } from '../engine/build.mjs';
+import { detectReports, setupWorkdir } from '../engine/setup.mjs';
 
 const SKILL = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FIX = path.join(SKILL, 'tests', 'fixtures');
@@ -574,6 +575,72 @@ eq('отчёт: в подсказках нет сумм', report.unknown.every((
 eq('отчёт: непрочитанный источник не роняет сборку', [report.sourceErrors?.length, /нет файла/.test(report.sourceErrors?.[0]?.error || '')], [1, true]);
 eq('отчёт: переводы и корпоративные действия', report.moves, { internal: 0, splits: 2, conversions: 2, inUnpaired: 2, outUnpaired: 0, writeOff: 2 });
 eq('отчёт: события амортизации и валюты есть', [report.events.AMORTIZATION, report.events.FX_BUY], [2, 2]);
+
+// ---------------------------------------------------------------------------------------------
+section('настройка из папки с отчётами: навык сам узнаёт файлы');
+const IN = path.join(TMP, 'Загрузки');
+fs.mkdirSync(path.join(IN, 'БКС по месяцам'), { recursive: true });
+fs.copyFileSync(path.join(SKILL, 'sample', 'snowball-sample.csv'), path.join(IN, 'snowball.csv'));
+fs.copyFileSync(path.join(FIX, 'sber-report.html'), path.join(IN, 'Отчёт Сбер.html'));
+fs.copyFileSync(bcsFile, path.join(IN, 'БКС по месяцам', '2024-03.xlsx'));
+fs.copyFileSync(bcsOld, path.join(IN, 'БКС по месяцам', '2024-02.xlsx'));
+fs.copyFileSync(iiFile, path.join(IN, 'complex_portfolio_report_1.xlsx'));
+fs.copyFileSync(allTypes, path.join(IN, 'мои-операции.csv'));
+fs.copyFileSync(xlsFile, path.join(IN, 'старый.xls'));
+fs.writeFileSync(path.join(IN, 'заметки.txt'), 'купить хлеб');
+fs.writeFileSync(path.join(IN, 'таблица.csv'), 'a,b\n1,2\n');
+// повторные скачивания того же файла — в «Загрузках» обычное дело; посчитать их дважды — удвоить портфель
+fs.copyFileSync(path.join(IN, 'snowball.csv'), path.join(IN, 'snowball (1).csv'));
+fs.copyFileSync(bcsFile, path.join(IN, '2024-03 (1).xlsx'));
+const det = detectReports(IN);
+eq('узнал отчёты по содержимому', det.found.map((f) => [f.name, f.type]), [
+  ['snowball.csv', 'snowball'], ['мои-операции.csv', 'csv'], ['2024-02.xlsx', 'bcs'], ['2024-03.xlsx', 'bcs'],
+  ['Отчёт Сбер.html', 'sber'], ['complex_portfolio_report_1.xlsx', 'intelinvest']]);
+eq('у каждого найденного есть операции', det.found.every((f) => f.operations > 0), true);
+eq('повторы и не отчёты — пропустил и сказал почему', det.skipped.map((s) => [s.name, /старый формат Excel/.test(s.reason), /не похож/.test(s.reason), /повтор/.test(s.reason)]),
+  [['2024-03 (1).xlsx', false, false, true], ['snowball (1).csv', false, false, true], ['старый.xls', true, false, false], ['таблица.csv', false, true, false]]);
+eq('выгрузка Snowball рядом с отчётами брокера — флаг «спросить человека»', det.overlap, true);
+eq('прочие файлы не трогал', det.ignored, 1);
+
+const MY = path.join(TMP, 'Мой портфель');
+fs.mkdirSync(MY);
+fs.writeFileSync(path.join(MY, 'custom.js'), '// моя доработка\n');
+const made = setupWorkdir({ workdir: MY, reports: IN });
+const mySettings = JSON.parse(fs.readFileSync(path.join(MY, 'settings.json'), 'utf8'));
+eq('settings.json: источник на каждый вид отчётов', mySettings.sources, [
+  { type: 'snowball', file: 'reports/snowball.csv', account: 'Snowball' },
+  { type: 'csv', file: 'reports/мои-операции.csv', account: 'Ручные' },
+  { type: 'bcs', file: 'reports/bcs', account: 'БКС' },
+  { type: 'sber', file: 'reports/sber', account: 'Сбербанк' },
+  { type: 'intelinvest', file: 'reports/complex_portfolio_report_1.xlsx', account: 'Интеллектуальный инвестор' }]);
+eq('settings.json: денег на счёте пока нет, прогноз по истории', [mySettings.cash, mySettings.forecast], [[], 'history12m']);
+eq('отчёты скопированы в папку портфеля', ['snowball.csv', 'мои-операции.csv', 'bcs/2024-02.xlsx', 'bcs/2024-03.xlsx', 'sber/Отчёт Сбер.html',
+  'complex_portfolio_report_1.xlsx'].every((f) => fs.existsSync(path.join(MY, 'reports', f))), true);
+eq('страница на месте, своя доработка не тронута', [fs.existsSync(path.join(MY, 'index.html')), fs.existsSync(path.join(MY, 'js')),
+  fs.existsSync(path.join(MY, 'custom.css')), fs.readFileSync(path.join(MY, 'custom.js'), 'utf8')], [true, true, true, '// моя доработка\n']);
+eq('итог настройки: найдено и пропущено', [made.found.length, made.skipped.length], [6, 4]);
+let again = '';
+try { setupWorkdir({ workdir: MY, reports: IN }); } catch (e) { again = e.message; }
+eq('второй раз не затирает настройки', /уже настроен/.test(again), true);
+// без сети сборке нужна дата оценки (иначе спросит у Мосбиржи последний торговый день)
+fs.writeFileSync(path.join(MY, 'settings.json'), JSON.stringify({ ...mySettings, asOf: '2024-03-31', watchlist: [] }));
+const myBuild = await build({ workdir: MY, offline: true, quiet: true });
+eq('сборка читает все источники без ошибок', [myBuild.report.sources.length, myBuild.report.sourceErrors?.length || 0], [5, 0]);
+
+let empty = '';
+fs.mkdirSync(path.join(TMP, 'пусто'));
+fs.writeFileSync(path.join(TMP, 'пусто', 'заметки.txt'), 'x');
+try { setupWorkdir({ workdir: path.join(TMP, 'П2'), reports: path.join(TMP, 'пусто') }); } catch (e) { empty = e.message; }
+eq('в папке нет отчётов — понятная ошибка, папка портфеля не создана', [/не нашёл/.test(empty), fs.existsSync(path.join(TMP, 'П2'))], [true, false]);
+
+const DEMO = path.join(TMP, 'Пример');
+setupWorkdir({ workdir: DEMO, sample: true });
+eq('тестовый портфель: выдуманная выгрузка и настройки', [JSON.parse(fs.readFileSync(path.join(DEMO, 'settings.json'), 'utf8')).title,
+  fs.existsSync(path.join(DEMO, 'reports', 'snowball-sample.csv')), fs.existsSync(path.join(DEMO, 'index.html'))], ['Тестовый портфель', true, true]);
+const TI = path.join(TMP, 'Т');
+setupWorkdir({ workdir: TI, tinvest: true });
+eq('Т-Инвестиции: источник по API, токена в настройках нет', JSON.parse(fs.readFileSync(path.join(TI, 'settings.json'), 'utf8')).sources,
+  [{ type: 'tinvest', account: 'Т-Инвестиции' }]);
 
 fs.rmSync(TMP, { recursive: true, force: true });
 console.log(`${failed ? 'FAIL' : 'OK  '} sources.test: проверок ${passed + failed}, не прошло ${failed}`);

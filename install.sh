@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# Установка навыка «portfolio» в каталог навыков агента.
+# Установка навыка «portfolio» в каталог навыков агента — меню для человека в терминале.
 # Запуск: ./install.sh            — спросит, куда ставить
 #         ./install.sh <каталог>  — поставить в <каталог>/portfolio
-# Ничего не удаляет: если навык уже стоит, спросит и отложит старую копию в ~/.portfolio-skill-old/ДАТА
-# (не рядом — иначе агент увидит два навыка с одним именем).
+# Копирует и проверяет install.mjs (его же запускает агент сам); старую копию он не удаляет, а откладывает
+# в ~/.portfolio-skill-old/ДАТА.
 set -euo pipefail
 
-SRC="$(cd "$(dirname "$0")" && pwd)/skills/portfolio"
-[ -f "$SRC/SKILL.md" ] || { echo "Не нашёл $SRC/SKILL.md — запускайте install.sh из скачанного репозитория." >&2; exit 1; }
+HERE="$(cd "$(dirname "$0")" && pwd)"
+command -v node >/dev/null 2>&1 || { echo "Не найден Node.js — поставьте версию LTS с nodejs.org и запустите ещё раз." >&2; exit 1; }
 
 if [ $# -ge 1 ]; then
   DEST_ROOT="$1"
@@ -27,24 +27,8 @@ else
   esac
 fi
 
-DEST="$DEST_ROOT/portfolio"
-mkdir -p "$DEST_ROOT"
-if [ -e "$DEST" ]; then
-  read -r -p "В $DEST уже есть навык. Заменить новым (старый будет отложен в ~/.portfolio-skill-old, не удалён)? [y/N]: " OK
+if [ -e "$DEST_ROOT/portfolio" ]; then
+  read -r -p "В $DEST_ROOT/portfolio уже есть навык. Заменить новым (старый будет отложен в ~/.portfolio-skill-old, не удалён)? [y/N]: " OK
   case "$OK" in y|Y|д|Д|yes|да) ;; *) echo "Оставил как есть."; exit 0 ;; esac
-  OLD="$HOME/.portfolio-skill-old/$(date +%Y%m%d-%H%M%S)"
-  mkdir -p "$OLD"
-  mv "$DEST" "$OLD/"
-  echo "Старая копия: $OLD"
 fi
-cp -R "$SRC" "$DEST"
-echo "Готово: навык в $DEST"
-
-if command -v node >/dev/null 2>&1; then
-  V="$(node -p 'process.versions.node.split(".")[0]')"
-  if [ "$V" -lt 18 ]; then echo "Внимание: Node.js $V — нужна версия 18 или новее (nodejs.org)."; fi
-  node "$DEST/tests/run.mjs" >/dev/null 2>&1 && echo "Проверки навыка прошли." || echo "Внимание: проверки навыка не прошли — запустите: node \"$DEST/tests/run.mjs\""
-else
-  echo "Внимание: не найден Node.js — поставьте версию LTS с nodejs.org."
-fi
-echo "Дальше: откройте агента и напишите «настрой мой портфель» (или «покажи на тестовом портфеле»)."
+exec node "$HERE/install.mjs" --target "$DEST_ROOT"
