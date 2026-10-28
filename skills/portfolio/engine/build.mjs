@@ -13,6 +13,7 @@ import { readSber, SBER_NOTE } from './sources/sber.mjs';
 import { readIntelinvest } from './sources/intelinvest.mjs';
 import { readCsvTemplate } from './sources/csv.mjs';
 import { dedupe, resolveMoves } from './merge.mjs';
+import { isMain } from './lib/cli.mjs';
 import { createMarket } from './market.mjs';
 import { compute, holdingsOn, addDays, makeFx } from './model.mjs';
 
@@ -426,7 +427,7 @@ export async function build({ workdir, offline = false, quiet = false }) {
 }
 
 // --- запуск из командной строки
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isMain(import.meta.url)) {
   const args = process.argv.slice(2);
   const i = args.indexOf('--workdir');
   if (i < 0 || !args[i + 1]) {

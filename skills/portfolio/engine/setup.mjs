@@ -14,6 +14,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SOURCE_TYPES } from './build.mjs';
+import { isMain } from './lib/cli.mjs';
 
 const SKILL_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const FILE_TYPES = Object.keys(SOURCE_TYPES).filter((t) => !SOURCE_TYPES[t].network);
@@ -166,7 +167,7 @@ export function setupWorkdir({ workdir, reports, sample = false, tinvest = false
   return { workdir, sources: settings.sources, found, skipped, ignored, overlap };
 }
 
-if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
+if (isMain(import.meta.url)) {
   const argv = process.argv.slice(2);
   const opt = (k) => { const i = argv.indexOf(k); return i >= 0 ? argv[i + 1] : undefined; };
   const home = (p) => p && path.resolve(p.replace(/^~(?=$|[\\/])/, os.homedir()));

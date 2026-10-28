@@ -668,6 +668,17 @@ eq('рецепт цели: карточка встаёт под первый э�
   [true, true, true, true]);
 eq('рецепт цели: есть стили', /\.goal-bar i/.test(block('рецепт-цель-css', 'css')), true);
 
+// ---------------------------------------------------------------------------------------------
+section('навык по пути через ссылку (каталог навыков на внешнем диске) — команды работают, а не молчат');
+const LINKED = path.join(TMP, 'навыки-ссылкой');
+fs.symlinkSync(SKILL, LINKED, 'dir');
+const viaLink = (await import('node:child_process')).spawnSync(process.execPath,
+  [path.join(LINKED, 'engine', 'setup.mjs'), '--workdir', path.join(TMP, 'По ссылке'), '--sample'], { encoding: 'utf8' });
+eq('setup.mjs по ссылке: вывел итог и создал папку портфеля',
+  [/Папка портфеля готова/.test(viaLink.stdout), fs.existsSync(path.join(TMP, 'По ссылке', 'settings.json'))], [true, true]);
+const buildLink = (await import('node:child_process')).spawnSync(process.execPath, [path.join(LINKED, 'engine', 'build.mjs')], { encoding: 'utf8' });
+eq('build.mjs по ссылке: без --workdir отвечает подсказкой, а не молчит', /Использование/.test(buildLink.stderr), true);
+
 fs.rmSync(TMP, { recursive: true, force: true });
 console.log(`${failed ? 'FAIL' : 'OK  '} sources.test: проверок ${passed + failed}, не прошло ${failed}`);
 process.exit(failed ? 1 : 0);

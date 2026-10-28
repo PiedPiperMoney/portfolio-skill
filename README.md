@@ -50,8 +50,10 @@
    DeepSeek Harness и OpenCode — как есть (`~/.agents/skills/portfolio`, Harness подхватит без перезапуска);
    Claude Code — добавь `--agent claude` (`~/.claude/skills/portfolio`). Дальше во всех командах навыка вместо `node` — путь, который
    напечатал `get-node` (обычно просто `node`).
-2. Прочитай установленный `SKILL.md` и `references/настройка.md` и веди настройку с шага 0 — выбор кнопками
-   (`ask_user_question` в DeepSeek Harness, `AskUserQuestion` в Claude Code).
+2. **Сразу**, в том же ответе, без вопроса текстом «начинать ли?», прочитай установленный `SKILL.md` и
+   `references/настройка.md` и переходи к настройке: первый вопрос — кнопками «С чего начнём?» (шаг 1;
+   `ask_user_question` в DeepSeek Harness, `AskUserQuestion` в Claude Code). Человек прислал ссылку, чтобы получить
+   дашборд, — установка без настройки ему ничего не даёт. Об установке скажи одной строкой над вопросом.
 
 ## Что нужно
 
