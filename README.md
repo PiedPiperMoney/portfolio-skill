@@ -47,8 +47,8 @@
      $T = Join-Path $env:TEMP ("portfolio-skill-" + [guid]::NewGuid()); New-Item -ItemType Directory $T | Out-Null; Invoke-WebRequest https://github.com/PiedPiperMoney/portfolio-skill/archive/refs/heads/main.zip -OutFile "$T\s.zip" -UseBasicParsing; Expand-Archive "$T\s.zip" $T; $NODE = powershell -NoProfile -ExecutionPolicy Bypass -File "$T\portfolio-skill-main\skills\portfolio\engine\get-node.ps1"; & $NODE "$T\portfolio-skill-main\install.mjs"
      ```
      `-ExecutionPolicy Bypass` — только для этого запуска: в Windows по умолчанию скрипты .ps1 не запускаются.
-   DeepSeek Harness — как есть (`~/.agents/skills/portfolio`, подхватится без перезапуска); Claude Code — добавь
-   `--agent claude` (`~/.claude/skills/portfolio`). Дальше во всех командах навыка вместо `node` — путь, который
+   DeepSeek Harness и OpenCode — как есть (`~/.agents/skills/portfolio`, Harness подхватит без перезапуска);
+   Claude Code — добавь `--agent claude` (`~/.claude/skills/portfolio`); Command Code — `--target ~/.commandcode/skills`. Дальше во всех командах навыка вместо `node` — путь, который
    напечатал `get-node` (обычно просто `node`).
 2. Прочитай установленный `SKILL.md` и `references/настройка.md` и веди настройку с шага 0 — выбор кнопками
    (`ask_user_question` в DeepSeek Harness, `AskUserQuestion` в Claude Code).
