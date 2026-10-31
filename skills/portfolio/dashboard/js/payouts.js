@@ -5,6 +5,17 @@
 let years = [], selYear = '';
 function yearLabel(y) { return y === asOf.slice(0, 4) ? `${y}, по ${dLong(asOf).replace(' ' + y, '')}` : y; }
 
+/* столбики истории: годы и последним — прогноз на 12 месяцев вперёд, другим цветом; налог в него уже заложен */
+function historyBars(gross, net) {
+  const fc = fwdTotal > 0 ? [fwdTotal] : [];
+  const yearTip = i => `<div class="t-d">${yearLabel(years[i])}</div>` + tipRow('До налога', rub(gross[i])) + tipRow('Налог', rub(gross[i] - net[i])) + tipRow('После налога', rub(net[i]), C.gold);
+  return {
+    cats: [...years.map(y => y === asOf.slice(0, 4) ? y + '*' : y), ...fc.map(() => 'прогноз')],
+    groups: [{ name: 'После налога', color: C.gold, colors: [...years.map(() => C.gold), ...fc.map(() => 'var(--s-IMOEX)')], vals: [...net, ...fc], top: [...gross.map((g, i) => g - net[i]), ...fc.map(() => 0)] }],
+    tip: i => i < years.length ? yearTip(i) : `<div class="t-d">Прогноз на 12 месяцев вперёд</div>` + tipRow('После налога', rub(fwdTotal)),
+  };
+}
+
 function renderPayouts() {
   years = Object.keys(D.divByYear).sort();
   if (!selYear || !years.includes(selYear)) selYear = years[years.length - 1] || '';
@@ -34,12 +45,10 @@ function renderPayouts() {
   if (hasHist) {
     const gross = years.map(y => Object.values(D.divByYear[y]).reduce((s, v) => s + v[0], 0));
     const net = years.map(y => Object.values(D.divByYear[y]).reduce((s, v) => s + v[1], 0));
-    const draw = () => barChart($('divChart'), {
-      cats: years.map(y => y === asOf.slice(0, 4) ? y + '*' : y), height: 240, yFmt: v => mlnAxis(v), selected: years.indexOf(selYear), label: 'Выплаты по годам',
-      groups: [{ name: 'После налога', color: C.gold, vals: net, top: gross.map((g, i) => g - net[i]) }],
-      tip: i => `<div class="t-d">${yearLabel(years[i])}</div>` + tipRow('До налога', rub(gross[i])) + tipRow('Налог', rub(gross[i] - net[i])) + tipRow('После налога', rub(net[i]), C.gold),
-      onClick: i => { selYear = years[i]; draw(); renderYear(); }
-    });
+    const draw = () => barChart($('divChart'), Object.assign(historyBars(gross, net), {
+      height: 240, yFmt: v => mlnAxis(v), selected: years.indexOf(selYear), label: 'Выплаты по годам и прогноз на 12 месяцев',
+      onClick: i => { if (i >= years.length) return; selYear = years[i]; draw(); renderYear(); }
+    }));
     draw(); renderPayouts.draw = draw;
     $('yearPick').innerHTML = `<select id="ySel" class="btn" aria-label="Год">${years.map(y => `<option ${y === selYear ? 'selected' : ''}>${y}</option>`).join('')}</select>`;
     $('ySel').onchange = e => { selYear = e.target.value; draw(); renderYear(); };

@@ -28,8 +28,10 @@ function renderCalendar(data) {
   const ctx = {
     window: { DATA: data, addEventListener() {} }, location: { hash: '' },
     localStorage: { getItem: () => null, setItem() {} }, document: { getElementById: el },
-    barChart() {}, console,
+    console,
   };
+  let history = null;
+  ctx.barChart = (host, opt) => { if (host.id === 'divChart') history = opt; };
   vm.createContext(ctx);
   for (const f of ['core', 'benchmark', 'payouts']) vm.runInContext(fs.readFileSync(path.join(SKILL, 'dashboard', 'js', `${f}.js`), 'utf8'), ctx);
   vm.runInContext('initCore(); renderPayouts();', ctx);
@@ -39,6 +41,7 @@ function renderCalendar(data) {
     months, calHidden: els.cal.hidden, calHtml: els.cal.innerHTML, note: els.fcNote.innerHTML,
     total: money(/Всего за 12 месяцев: <b class="num">([^<]+)<\/b>/.exec(els.fcNote.innerHTML)?.[1] || ''),
     card: Math.round(vm.runInContext('fwdTotal', ctx)),
+    history,
   };
 }
 
@@ -85,9 +88,17 @@ eq('купоны не размазаны по месяцам', cal.calHtml.inclu
 eq('подпись называет купоны суммой за год', /510.*купонами облигаций/.test(cal.note.replace(/&nbsp;/g, ' ')), true);
 eq('подпись не обещает разложение поровну', /поровну/.test(cal.note), false);
 
+section('история по годам: последним столбиком — прогноз на 12 месяцев');
+const bars = cal.history;
+eq('последний столбик подписан «прогноз»', bars.cats[bars.cats.length - 1], 'прогноз');
+eq('его высота — прогноз после налога', bars.groups[0].vals[bars.cats.length - 1], 1360);
+eq('у прогноза нет надставки «налог»', bars.groups[0].top[bars.cats.length - 1], 0);
+eq('прогноз другого цвета, чем факт', bars.groups[0].colors[bars.cats.length - 1] !== bars.groups[0].colors[0], true);
+
 section('портфель без выплат');
 const empty = renderCalendar({ ...data, forecast: [], positions: data.positions.map((p) => ({ ...p, fwdIncome: 0 })) });
 eq('календаря нет, вместо него фраза', [empty.calHidden, /Ожидаемых выплат в ближайшие 12 месяцев в данных нет/.test(empty.note)], [true, true]);
+eq('прогноза нет — и столбика нет', empty.history.cats.includes('прогноз'), false);
 
 console.log(`${failed ? 'FAIL' : 'OK  '} payouts.test: проверок ${passed + failed}, не прошло ${failed}`);
 process.exit(failed ? 1 : 0);
