@@ -117,6 +117,7 @@ function lineChart(host, opt) {
 }
 
 /* ---------- столбики (SVG) ---------- */
+const barLabel = (c, width) => width < 38 ? c.replace(/^20(\d\d)/, '’$1') : c; // на телефоне полные годы слипаются: 2018 → ’18
 function barChart(host, opt) {
   // opt: {cats:[label], groups:[{name,color,vals:[], stackTop?:[]}], height, yFmt, onClick(i), selected, tip(i)}
   const W = Math.max(280, host.clientWidth), H = opt.height;
@@ -136,7 +137,7 @@ function barChart(host, opt) {
       s += `<rect x="${x}" y="${y1}" width="${bw}" height="${h}" rx="3" fill="${gr.color}" opacity="${gr.opacity || 1}"/>`;
       if (gr.top) { const t = gr.top[i]; if (t > 0) s += `<rect x="${x}" y="${Y(v + t)}" width="${bw}" height="${Math.max(1, Y(v) - Y(v + t) - 2)}" rx="3" fill="${gr.color}" opacity=".32"/>`; }
     });
-    s += `<text x="${cx}" y="${H - 8}" text-anchor="middle" font-size="12" fill="${opt.selected === i ? C.ink : C.muted}" ${opt.selected === i ? 'font-weight="600"' : ''}>${esc(c)}</text>`;
+    s += `<text x="${cx}" y="${H - 8}" text-anchor="middle" font-size="12" fill="${opt.selected === i ? C.ink : C.muted}" ${opt.selected === i ? 'font-weight="600"' : ''}>${esc(barLabel(c, cw))}</text>`;
     s += `<rect class="hit" data-i="${i}" x="${L + cw * i}" y="${T}" width="${cw}" height="${ph + B}" fill="transparent" style="cursor:${opt.onClick ? 'pointer' : 'default'}"/>`;
   });
   s += '</svg>';
