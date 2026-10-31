@@ -613,7 +613,7 @@ eq('settings.json: источник на каждый вид отчётов', my
   { type: 'bcs', file: 'reports/bcs', account: 'БКС' },
   { type: 'sber', file: 'reports/sber', account: 'Сбербанк' },
   { type: 'intelinvest', file: 'reports/complex_portfolio_report_1.xlsx', account: 'Интеллектуальный инвестор' }]);
-eq('settings.json: денег на счёте пока нет, прогноз по истории', [mySettings.cash, mySettings.forecast], [[], 'history12m']);
+eq('settings.json: денег на счёте пока нет, прогноз dohod.ru', [mySettings.cash, mySettings.forecast], [[], 'dohod']);
 eq('отчёты скопированы в папку портфеля', ['snowball.csv', 'мои-операции.csv', 'bcs/2024-02.xlsx', 'bcs/2024-03.xlsx', 'sber/Отчёт Сбер.html',
   'complex_portfolio_report_1.xlsx'].every((f) => fs.existsSync(path.join(MY, 'reports', f))), true);
 eq('страница на месте, своя доработка не тронута', [fs.existsSync(path.join(MY, 'index.html')), fs.existsSync(path.join(MY, 'js')),

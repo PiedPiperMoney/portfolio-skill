@@ -1,4 +1,4 @@
-// Рыночные данные: Мосбиржа ISS (цены бумаг с НКД и номиналом, индексы, купоны), ЦБ (курсы валют).
+// Рыночные данные: Мосбиржа ISS (цены бумаг с НКД и номиналом, индексы, купоны), ЦБ (курсы валют), dohod.ru (прогноз дивидендов).
 // Всё складывается в кэш <папка>/.cache/. Кэш годен, если скачан после окончания нужного дня (fetchedAt > till);
 // иначе докачиваем только недостающий хвост. Обрывы сети — до 6 попыток с паузой.
 import fs from 'node:fs';
@@ -15,6 +15,8 @@ export const CBR_CODES = {
 
 // режимы торгов, с которых берём историю цен (после основного)
 const MAIN_BOARDS = ['TQBR', 'TQCB', 'TQOB', 'TQTF', 'EQBR', 'TQDE', 'TQIF'];
+// страницы dohod.ru, у которых адрес не совпадает с тикером
+const DOHOD_SLUG = { AGRO: 'ragr', ENPL: 'enpg' };
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const todayIso = () => new Date().toISOString().slice(0, 10);
@@ -213,6 +215,22 @@ export function createMarket({ cacheDir, log = () => {}, offline = false }) {
     return c.coupons;
   }
 
+  // dohod.ru: прогноз дивидендов на 12 месяцев на акцию и выплаты по датам закрытия реестра
+  async function dohod(ticker, asOf) {
+    const name = `dohod-${ticker}.json`;
+    let c = readCache(name);
+    if (c && c.fetchedAt > asOf) return c.data;
+    const slug = DOHOD_SLUG[ticker] || ticker.toLowerCase();
+    let data;
+    try {
+      data = parseDohod(slug, await fetchText(`https://www.dohod.ru/ik/analytics/dividend/${slug}`, { timeoutMs: 40000 }));
+    } catch (err) {
+      if (!(err instanceof HttpError && err.status === 404)) throw err;
+      data = { slug, next12: null, payments: [], error: err.message }; // нет страницы — запоминаем
+    }
+    writeCache(name, { fetchedAt: todayIso(), data });
+    return data;
+  }
 
   // Тикер (код Мосбиржи) по ISIN: поиск ISS; торгуемая бумага фондового рынка в приоритете. Кэш — isin-map.json
   async function isinToSecid(isin) {
@@ -238,6 +256,37 @@ export function createMarket({ cacheDir, log = () => {}, offline = false }) {
     }
   }
 
-  return { secInfo, isinToSecid, secHistory, indexHistory, lastTradingDay, cbrRates, bondCoupons, safe, failed, readCache, writeCache };
+  return { secInfo, isinToSecid, secHistory, indexHistory, lastTradingDay, cbrRates, bondCoupons, dohod, safe, failed, readCache, writeCache };
 }
 
+// Разбор страницы dohod.ru
+export function parseDohod(slug, html) {
+  const strip = (s) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  const num = (s) => {
+    const t = (s || '').replace(/[^0-9.,-]/g, '').replace(/,/g, '.');
+    if (!t) return null;
+    const v = Number(t);
+    return Number.isFinite(v) ? v : null;
+  };
+  const res = { slug, next12: null, payments: [] };
+  for (const t of html.match(/<table[\s\S]*?<\/table>/g) || []) {
+    const rows = [...t.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/g)]
+      .map((m) => [...m[1].matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/g)].map((c) => strip(c[1])));
+    if (!rows.length) continue;
+    const head = rows[0].join(' ').toLowerCase();
+    if (head.startsWith('год')) {
+      for (const r of rows.slice(1)) if ((r[0] || '').includes('прогноз')) res.next12 = num(r[1]);
+    }
+    if (head.includes('закрытия реестра')) {
+      for (const r of rows.slice(1)) {
+        const m = /(\d\d)\.(\d\d)\.(\d{4})/.exec(r[1] || '');
+        if (!m) continue;
+        res.payments.push({
+          record_date: `${m[3]}-${m[2]}-${m[1]}`, forecast: (r[1] || '').includes('прогноз'),
+          announced: r[0], year: r[2], amount: num(r[3]),
+        });
+      }
+    }
+  }
+  return res;
+}

@@ -73,7 +73,7 @@ function readSettings(workdir) {
   const s = JSON.parse(fs.readFileSync(p, 'utf8'));
   return {
     sources: [], asOf: 'auto', cash: [], watchlist: DEFAULT_WATCHLIST, names: {}, sectors: {}, title: 'Мой портфель',
-    forecast: 'history12m', forecastTax: 0.15, snowballRef: null, ...s,
+    forecast: 'dohod', forecastTax: 0.15, snowballRef: null, ...s,
   };
 }
 
@@ -214,6 +214,23 @@ async function loadOps(workdir, settings, { log, offline }) {
 }
 
 // Тикер по ISIN (Мосбиржа) для операций, где из отчёта известен только ISIN
+// старый режим history12m прописан в настройках у всех прежних портфелей и занижал прогноз; остаться на своих выплатах — own12m
+function forecastSetting(settings) {
+  if (settings.forecast === 'own12m') return { dohod: false, mode: 'own12m', label: 'прогноз выплат — по выплатам за прошлые 12 месяцев' };
+  return { dohod: true, mode: 'dohod', label: 'прогноз выплат — dohod.ru, нет прогноза — по выплатам за прошлые 12 месяцев' };
+}
+
+// прогноз dohod.ru для акции; нет страницы или прогноза — false, и бумага считается по своим выплатам
+async function addDohodForecast(market, s, asOf, { fwd, forecastItems, notes }) {
+  const d = await market.safe(`dohod.ru ${s}`, () => market.dohod(s, asOf), null);
+  if (!d || d.error || d.next12 == null) { notes.push(`dohod.ru: нет прогноза по ${s} — считаем по её выплатам за 12 месяцев.`); return false; }
+  fwd[s] = { grossPerUnit: d.next12 };
+  for (const p of d.payments.filter((x) => x.record_date > asOf && x.amount)) {
+    forecastItems.push({ recordDate: p.record_date, ticker: s, perShare: p.amount, status: p.forecast ? 'прогноз' : 'объявлен' });
+  }
+  return true;
+}
+
 async function resolveIsins(ops, market, notes) {
   const isins = [...new Set(ops.filter((o) => o.isin && (!o.symbol || o.symbol === o.isin)).map((o) => o.isin))];
   const found = {};
@@ -306,6 +323,7 @@ export async function build({ workdir, offline = false, quiet = false }) {
   const fx = makeFx(rates);
   const fwd = {}, forecastItems = [];
   const horizon = addDays(asOf, 365);
+  const forecast = forecastSetting(settings);
   for (const s of held) {
     if (meta[s]?.kind === 'Облигация') {
       // купоны — по расписанию Мосбиржи
@@ -322,6 +340,8 @@ export async function build({ workdir, offline = false, quiet = false }) {
         forecastItems.push({ recordDate: c.recordDate, ticker: s, perShare: rub, status: 'купон по расписанию' });
       }
       fwd[s] = { grossPerUnit: sum };
+    } else if (forecast.dohod && meta[s]?.kind === 'Акция' && !prices[s]?.own && await addDohodForecast(market, s, asOf, { fwd, forecastItems, notes })) {
+      // акции Мосбиржи — прогноз dohod.ru; фонды и иностранные бумаги — по своим выплатам (ниже)
     } else {
       // по своим выплатам за прошлые 12 месяцев: на бумагу = выплата ÷ бумаг на дату выплаты
       let sum = 0;
@@ -363,7 +383,7 @@ export async function build({ workdir, offline = false, quiet = false }) {
       source: [
         srcNames[0].toUpperCase() + srcNames.slice(1), 'цены и индексы — Мосбиржа', 'курс — ЦБ',
         ...(ownSyms.length ? [`${ownSyms.join(', ')} — по ценам собственных сделок`] : []),
-        'прогноз выплат — по выплатам за прошлые 12 месяцев',
+        forecast.label,
       ].join('; '),
       days: r.days, value: r.value, invested: r.invested, flows: r.flows, indexes: r.indexes,
       indexNames: Object.fromEntries(Object.keys(r.indexes).map((c) => [c, INDEX_NAMES[c] || c])),
@@ -375,7 +395,7 @@ export async function build({ workdir, offline = false, quiet = false }) {
       watchlist: settings.watchlist,
       // добавлено к формату эталона
       title: settings.title,
-      forecastMode: settings.forecast,
+      forecastMode: forecast.mode,
       loadedOn, lastOperation: last,
     };
   };

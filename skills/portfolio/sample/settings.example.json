@@ -17,6 +17,6 @@
   ],
   "names": { "SBER": "Сбербанк" },
   "sectors": {},
-  "forecast": "history12m",
+  "forecast": "dohod",
   "forecastTax": 0.15
 }

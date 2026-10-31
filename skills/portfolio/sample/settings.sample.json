@@ -15,6 +15,6 @@
   ],
   "names": { "SU26238RMFS4": "ОФЗ 26238" },
   "sectors": {},
-  "forecast": "history12m",
+  "forecast": "dohod",
   "forecastTax": 0.15
 }

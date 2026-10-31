@@ -1,5 +1,5 @@
 /* payouts.js — раздел «Выплаты»: календарь на 12 месяцев по датам реестра, история по годам (столбики и таблица),
-   последние поступления. Купоны облигаций распределяются по месяцам поровну — это оценка. */
+   последние поступления. Купоны облигаций движок кладёт в D.forecast по датам, как и дивиденды. */
 'use strict';
 
 let years = [], selYear = '';
@@ -10,23 +10,23 @@ function renderPayouts() {
   if (!selYear || !years.includes(selYear)) selYear = years[years.length - 1] || '';
   // календарь
   const start = new Date(Date.UTC(+asOf.slice(0, 4), +asOf.slice(5, 7) - 1, 1));
-  const bd = bonds().filter(p => p.fwdIncome), bondYear = bd.reduce((s, p) => s + p.fwdIncome, 0), bondM = bondYear / 12;
   const months = [];
   for (let m = 0; m < 12; m++) { const d = new Date(Date.UTC(start.getUTCFullYear(), start.getUTCMonth() + 1 + m, 1)); months.push(d.toISOString().slice(0, 7)); }
   const endIso = iso(Date.UTC(+asOf.slice(0, 4) + 1, +asOf.slice(5, 7) - 1, +asOf.slice(8, 10)));
   const fc = D.forecast.filter(f => f.recordDate > asOf && f.recordDate <= endIso);
-  $('cal').hidden = !fc.length && !bd.length; // нет ни реестров, ни купонов — пустой календарь не рисуем
+  if (fc.some(f => f.recordDate.startsWith(asOf.slice(0, 7)))) months.unshift(asOf.slice(0, 7)); // выплата до конца этого месяца входит в итог — её месяц тоже показываем
+  $('cal').hidden = !fc.length; // нет ни реестров, ни купонов — пустой календарь не рисуем
   $('cal').innerHTML = months.map(ym => {
     const its = fc.filter(f => f.recordDate.startsWith(ym)).sort((x, y) => x.recordDate < y.recordDate ? -1 : 1);
-    const tot = its.reduce((s, f) => s + f.net, 0) + bondM;
+    const tot = its.reduce((s, f) => s + f.net, 0);
     return `<div class="mon ${its.length ? 'has' : ''}"><div class="m-h"><span>${MONN[+ym.slice(5) - 1]} ${ym.slice(0, 4)}</span><b class="num">${rub(tot)}</b></div>` +
-      its.map(f => `<div class="it">${+f.recordDate.slice(8)}${NB}${MONS[+f.recordDate.slice(5, 7) - 1]} · ${esc(f.name)}<br><span class="num">${rub(f.net)}</span> <span class="pill ${f.status === 'объявлен' ? 'an' : 'fc'}">${f.status}</span></div>`).join('') +
-      (bd.length ? `<div class="it muted">+ ${bd.length > 1 ? 'купоны облигаций' : 'купон облигации'} ≈${NB}${rub(bondM)}</div>` : '') + '</div>';
+      its.map(f => `<div class="it">${+f.recordDate.slice(8)}${NB}${MONS[+f.recordDate.slice(5, 7) - 1]} · ${esc(f.name)}<br><span class="num">${rub(f.net)}</span> <span class="pill ${f.status === 'объявлен' ? 'an' : 'fc'}">${f.status}</span></div>`).join('') + '</div>';
   }).join('');
   const fcSum = fc.reduce((s, f) => s + f.net, 0);
+  const bondT = new Set(bonds().map(p => p.ticker)), couponSum = fc.filter(f => bondT.has(f.ticker)).reduce((s, f) => s + f.net, 0);
   $('fcSub').textContent = `${dmy(days[LAST])} – ${dmy(endIso)} · после налога 15 %`;
-  $('fcNote').innerHTML = (fcSum || bondYear)
-    ? `Всего за 12 месяцев: <b class="num">${rub(fcSum + bondYear)}</b> после налога — ${rub(fcSum)} по датам реестра акций${bd.length ? ` и ${rub(bondYear)} купонами облигаций` : ''}. Месяц — по дате реестра; деньги обычно приходят позже, до нескольких недель. «Прогноз» — оценка, «объявлен» — решение компании.` + (bd.length ? ' Купоны облигаций разложены по месяцам поровну, поэтому это оценка.' : '')
+  $('fcNote').innerHTML = fcSum
+    ? `Всего за 12 месяцев: <b class="num">${rub(fcSum)}</b> после налога${couponSum ? ` — ${rub(fcSum - couponSum)} по датам реестра акций и ${rub(couponSum)} купонами облигаций` : ''}. Месяц — по дате реестра; деньги обычно приходят позже, до нескольких недель. «Прогноз» — оценка, «объявлен» — решение компании.`
     : 'Ожидаемых выплат в ближайшие 12 месяцев в данных нет.';
   // история
   const hasHist = years.length > 0;
